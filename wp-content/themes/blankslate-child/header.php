@@ -22,14 +22,14 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 
 <div class="container">
     <div class="logo">
-    <a href="#">
+    <a href="<?php echo esc_url(home_url('/')); ?>">
     <img src="<?php echo get_stylesheet_directory_uri() . '/images/Nathalie Mota.png'; ?>" alt="Logo" class="image-with-padding">
 </a>
     </div>
     <nav>
       <ul>
-        <li><a href="#">ACCUEIL</a></li>
-        <li><a href="#">À PROPOS</a></li>
+        <li><a href="<?php echo esc_url(home_url('/')); ?>">ACCUEIL</a></li>
+        <li><a href="<?php echo esc_url(get_permalink(get_page_by_title('A propos'))); ?>">À PROPOS</a></li>
         <li><a href="#">CONTACT</a></li>
       </ul>
     </nav>
