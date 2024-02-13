@@ -35,7 +35,8 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
     </nav>
 </div>
 <div class="banner">
-  <h1>PHOTOGRAPHE EVENT</h1>
+<img src="<?php echo get_stylesheet_directory_uri() . '/images/Titre header.png'; ?>" alt="Logo" class="image-with-padding">
+
 </div>
 
 </header>
