@@ -30,13 +30,14 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
       <ul>
         <li><a href="<?php echo esc_url(home_url('/')); ?>">ACCUEIL</a></li>
         <li><a href="<?php echo esc_url(get_permalink(get_page_by_title('A propos'))); ?>">À PROPOS</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><a href="#myModal">CONTACT</a></li>
       </ul>
     </nav>
 </div>
 <div class="banner">
   <h1>PHOTOGRAPHE EVENT</h1>
 </div>
+
 </header>
 <div id="container">
 <main id="content" role="main">

@@ -132,3 +132,51 @@ line-height: 142.18px;
 .footer-content ul li a:hover, nav ul li a:hover{
   font-weight: 700;
 }
+
+
+/* MODALE */
+/* Style de la modale */
+.modal {
+  display: none; /* Par défaut, la modale est cachée */
+  position: fixed; /* Permet de positionner la modale par rapport à la fenêtre du navigateur */
+  z-index: 1; /* Assure que la modale s'affiche au-dessus du reste du contenu */
+  left: 0;
+  top: 0;
+  width: 100%; /* La modale couvre toute la largeur de l'écran */
+  height: 100%; /* La modale couvre toute la hauteur de l'écran */
+  overflow: auto; /* Ajoute un défilement si nécessaire */
+  background-color: rgb(0,0,0); /* Fond noir avec opacité */
+  background-color: rgba(0,0,0,0.4); /* Fond noir semi-transparent */
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* Centre la modale verticalement et horizontalement */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 597px; /* Largeur de la modale */
+  height: 769px; /* Hauteur de la modale */
+}
+
+/* Style pour le bouton de fermeture */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* MODALE */
+.contact-img{
+width: 886px;
+height: 106px;
+}
