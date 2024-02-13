@@ -22,23 +22,21 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 
 <div class="container">
     <div class="logo">
-    <?php
-$image_path = './images/Nathalie Mota.png';
-?>
-      <img src="<?php echo $image_path; ?>" alt="Logo">
+    <a href="#">
+    <img src="<?php echo get_stylesheet_directory_uri() . '/images/Nathalie Mota.png'; ?>" alt="Logo" class="image-with-padding">
+</a>
     </div>
     <nav>
       <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">À propos</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">ACCUEIL</a></li>
+        <li><a href="#">À PROPOS</a></li>
+        <li><a href="#">CONTACT</a></li>
       </ul>
     </nav>
 </div>
 <div class="banner">
-
+  <h1>PHOTOGRAPHE EVENT</h1>
 </div>
-
 </header>
 <div id="container">
 <main id="content" role="main">

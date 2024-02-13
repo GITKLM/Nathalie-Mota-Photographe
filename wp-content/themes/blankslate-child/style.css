@@ -24,6 +24,13 @@ Version: 1.0
 }
 
 @font-face {
+  font-family: 'Space Mono';
+  font-style: bold;
+  font-weight: 700;
+  src: local('Space Mono Bold'), local('SpaceMono-Bold'), url('fonts/SpaceMono-Bold.woff2') format('woff2'), url('fonts/spacemono-italic.woff') format('woff');
+}
+
+@font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -55,13 +62,8 @@ body {
     align-items: center;
     height: 80px;
     padding: 0px 100px;
+  }
 
-  }
-  
-  .logo img {
-    width: 100px; 
-  }
-  
   nav ul {
     list-style-type: none;
     margin: 0;
@@ -79,7 +81,26 @@ body {
     font-size: 16px;
   }
 
-  /*  HEADER */
+  .banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/nathalie-11.jpeg.png');
+    width: 100vw;
+    height: 100vh;
+    max-width: 1440px;
+    max-height: 966px;
+  }
+h1{
+  font-weight: 700;
+  font-style: italic;
+  color: transparent; 
+    -webkit-text-stroke: 3px #FFFFFF; /* Bordure colorée pour les navigateurs WebKit */
+  font-size: 106px;
+line-height: 142.18px;
+
+}
+  /*  FOOTER */
 
   footer {
     border-top: 1px solid black;
@@ -103,4 +124,7 @@ body {
 .footer-content ul li a{
   color: inherit;
   text-decoration: none;
+}
+.footer-content ul li a:hover, nav ul li a:hover{
+  font-weight: 700;
 }
