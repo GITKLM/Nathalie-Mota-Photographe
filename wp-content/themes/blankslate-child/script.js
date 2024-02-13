@@ -1,3 +1,5 @@
+
+/* MODALE */
 // Trouver le bouton pour ouvrir la modale
 var modalLink = document.querySelector('a[href="#myModal"]');
 
