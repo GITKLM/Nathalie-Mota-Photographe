@@ -11,6 +11,8 @@
       </ul>
 </div>
 <?php wp_footer(); ?>
+   <!-- Inclure la modale de contact -->
+   <?php get_template_part( 'templates_part/modal-contact'); ?>
 </body>
 </html>
 

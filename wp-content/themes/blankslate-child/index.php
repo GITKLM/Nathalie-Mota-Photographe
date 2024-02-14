@@ -24,18 +24,26 @@ get_header();
         ?>
     </select>
     <select name="type_reference">
-        <option value="">TRIER PAR</option>
-        <?php
-        // Récupérer tous les termes des taxonomies "type" et "référence"
-        $types = get_terms( array(
-            'taxonomy' => array( 'type', 'reference' ),
-            'hide_empty' => true,
-        ) );
-        foreach ( $types as $type ) {
-            echo '<option value="' . esc_attr( $type->slug ) . '">' . esc_html( $type->name ) . '</option>';
-        }
-        ?>
-    </select>
+    <option value="">TRIER PAR</option>
+    <?php
+    // Récupérer tous les posts triés par date
+    $args = array(
+        'post_type' => 'post', // Remplacez "post" par le type de post que vous souhaitez trier
+        'orderby' => 'date',
+        'order' => 'DESC', // Vous pouvez changer pour 'ASC' si vous voulez trier par ordre ascendant
+        'posts_per_page' => -1, // Récupérer tous les posts, vous pouvez ajuster ce nombre selon vos besoins
+    );
+    $query = new WP_Query( $args );
+    if ( $query->have_posts() ) :
+        while ( $query->have_posts() ) :
+            $query->the_post();
+            echo '<option value="' . esc_attr( get_the_ID() ) . '">' . esc_html( get_the_title() ) . '</option>';
+        endwhile;
+        wp_reset_postdata();
+    endif;
+    ?>
+</select>
+
     <!-- <button type="submit">Filtrer</button> -->
 </form>
 
