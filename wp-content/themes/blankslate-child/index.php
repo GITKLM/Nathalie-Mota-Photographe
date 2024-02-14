@@ -39,61 +39,44 @@ get_header();
     <!-- <button type="submit">Filtrer</button> -->
 </form>
 
-<?php
-$args = array(
-    'post_type' => 'photo', // Votre type de contenu personnalisé
-    'posts_per_page' => -1, // Afficher tous les éléments
-);
-
-// Vérifier si des filtres de catégorie et de format sont fournis dans l'URL
-if ( isset( $_GET['category'] ) && ! empty( $_GET['category'] ) ) {
-    $args['tax_query'][] = array(
-        'taxonomy' => 'categorie',
-        'field'    => 'slug',
-        'terms'    => $_GET['category'],
-    );
-}
-if ( isset( $_GET['format'] ) && ! empty( $_GET['format'] ) ) {
-    $args['meta_query'][] = array(
-        'key'   => 'format', // Clé du champ personnalisé "format" ACF
-        'value' => $_GET['format'],
-    );
-}
-
-// Récupérer les éléments en fonction des paramètres de requête
-$photos_query = new WP_Query( $args );
-
-// Afficher les éléments récupérés
-if ( $photos_query->have_posts() ) :
-    while ( $photos_query->have_posts() ) : $photos_query->the_post();
-        // Afficher le contenu de chaque élément
-        ?>
-        <div class="photo">
-            <h2><?php the_title(); ?></h2>
-            <?php the_post_thumbnail(); ?>
-            <div><?php the_content(); ?></div>
-            <?php
-            // Afficher la valeur du champ personnalisé "type" ACF
-            $type = get_field( 'type' );
-            if ( $type ) {
-                echo '<p>Type: ' . esc_html( $type ) . '</p>';
-            }
-            ?>
-            <?php
-            // Afficher la valeur du champ personnalisé "référence" ACF
-            $reference = get_field( 'reference' );
-            if ( $reference ) {
-                echo '<p>Référence: ' . esc_html( $reference ) . '</p>';
-            }
-            ?>
-        </div>
+<div class="thumbnails-container">
+    <div class="row">
         <?php
-    endwhile;
-    wp_reset_postdata(); // Réinitialiser les données de publication
-else :
-    echo 'Aucun élément trouvé.';
-endif;
-?>
+        $args = array(
+            'post_type' => 'photo', // Votre type de contenu personnalisé
+            'posts_per_page' => -1, // Afficher tous les éléments
+        );
+
+        // Récupérer les éléments en fonction des paramètres de requête
+        $photos_query = new WP_Query( $args );
+
+        // Afficher les éléments récupérés
+        if ( $photos_query->have_posts() ) :
+            $count = 0;
+            while ( $photos_query->have_posts() ) : $photos_query->the_post();
+                // Afficher le thumbnail de chaque article
+                if ($count % 2 === 0) {
+                    echo '</div><div class="row">';
+                }
+                ?>
+                <div class="column">
+                    <?php
+                    the_post_thumbnail(
+                        array(564, 495),
+                        array('class' => 'custom-thumbnail')
+                    );
+                    ?>
+                </div>
+                <?php
+                $count++;
+            endwhile;
+            wp_reset_postdata(); // Réinitialiser les données de publication
+        else :
+            echo 'Aucun élément trouvé.';
+        endif;
+        ?>
+    </div>
+</div>
 
 <?php
 get_footer();

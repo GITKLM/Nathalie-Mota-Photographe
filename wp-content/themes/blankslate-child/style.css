@@ -181,3 +181,55 @@ line-height: 142.18px;
 width: 886px;
 height: 106px;
 }
+
+
+
+/* TEST Styles pour le titre de l'article */
+.entry-title {
+  font-size: 64px;
+  color: pink;
+}
+
+/* Styles pour le contenu de l'article */
+.entry-content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  margin-top: 800px;
+}
+.entry-content img{
+margin-left: 100px;
+}
+
+/* Styles pour le pied de page de l'article */
+.entry-footer {
+  font-style: italic;
+  color: #666;
+}
+
+
+/*Gallerie*/
+
+.thumbnails-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0; /* Supprime l'espace entre les colonnes */
+}
+
+.thumbnails-container .column {
+  width: 564px;
+  height: 495px;
+  margin-bottom: 10px; /* Espace vertical entre les lignes */
+  box-sizing: border-box; /* Inclure les bordures et les marges dans la largeur */
+  overflow: hidden; /* Masquer tout contenu dépassant de la colonne */
+}
+
+.custom-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
