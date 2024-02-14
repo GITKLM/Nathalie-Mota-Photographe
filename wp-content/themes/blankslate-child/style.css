@@ -60,7 +60,8 @@ body {
 #branding{
     display: none;
 }
-  .container {
+
+   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,7 +84,7 @@ body {
     text-decoration: none;
     color: #333;
     font-size: 16px;
-  }
+  } 
 
   .banner{
     display: flex;
@@ -95,15 +96,15 @@ body {
     max-width: 1440px;
     max-height: 966px;
   }
-h1{
+/* h1{
   font-weight: 700;
-  /* font-style: italic; */
+
   color: transparent; 
-    -webkit-text-stroke: 3px #FFFFFF; /* Bordure colorée pour les navigateurs WebKit */
+    -webkit-text-stroke: 3px #FFFFFF;
   font-size: 106px;
 line-height: 142.18px;
 
-}
+} */
   /*  FOOTER */
 
   footer {

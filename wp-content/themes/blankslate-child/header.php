@@ -20,19 +20,17 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 <div id="site-description"<?php if ( !is_single() ) { echo ' itemprop="description"'; } ?>><?php bloginfo( 'description' ); ?></div>
 </div>
 
+
 <div class="container">
     <div class="logo">
     <a href="<?php echo esc_url(home_url('/')); ?>">
     <img src="<?php echo get_stylesheet_directory_uri() . '/images/Nathalie Mota.png'; ?>" alt="Logo" class="image-with-padding">
 </a>
     </div>
-    <nav>
-      <ul>
-        <li><a href="<?php echo esc_url(home_url('/')); ?>">ACCUEIL</a></li>
-        <li><a href="<?php echo esc_url(get_permalink(get_page_by_title('A propos'))); ?>">À PROPOS</a></li>
-        <li><a href="#myModal">CONTACT</a></li>
-      </ul>
-    </nav>
+    <nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>' ) ); ?>
+</nav>
+
 </div>
 <div class="banner">
 <img src="<?php echo get_stylesheet_directory_uri() . '/images/Titre header.png'; ?>" alt="Logo" class="image-with-padding">
