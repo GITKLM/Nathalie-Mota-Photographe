@@ -135,10 +135,10 @@ line-height: 142.18px;
 }
 
 
-/* MODALE */
+/* MODALE EN PAUSE */ 
 /* Style de la modale */
 .modal {
-  display: none; /* Par défaut, la modale est cachée */
+  display: none; 
   position: fixed; /* Permet de positionner la modale par rapport à la fenêtre du navigateur */
   z-index: 1; /* Assure que la modale s'affiche au-dessus du reste du contenu */
   left: 0;

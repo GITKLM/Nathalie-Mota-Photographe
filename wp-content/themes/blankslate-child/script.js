@@ -1,20 +1,30 @@
 
 /* MODALE */
-// Trouver le bouton pour ouvrir la modale
-var modalLink = document.querySelector('a[href="#myModal"]');
 
-// Trouver la modale
-var modal = document.getElementById('myModal');
+// var modalLink = document.querySelector('a[href="#myModal"]');
 
-// Trouver le bouton de fermeture
-var closeButton = document.querySelector('.close');
 
-// Ouvrir la modale quand le bouton est cliqué
-modalLink.addEventListener('click', function() {
-  modal.style.display = 'block';
-});
+// var modal = document.getElementById('myModal');
 
-// Fermer la modale quand le bouton de fermeture est cliqué
-closeButton.addEventListener('click', function() {
-  modal.style.display = 'none';
+
+// var closeButton = document.querySelector('.close');
+
+
+// modalLink.addEventListener('click', function() {
+//   modal.style.display = 'block';
+// });
+
+// closeButton.addEventListener('click', function() {
+//   modal.style.display = 'none';
+// });
+
+
+
+/* FILTRE */
+jQuery(document).ready(function($) {
+  // Lorsqu'un élément de la liste est sélectionné
+  $('.filter-select').change(function() {
+      // Soumettre automatiquement le formulaire
+      $('#filter-form').submit();
+  });
 });
