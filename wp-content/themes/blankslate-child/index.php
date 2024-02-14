@@ -40,7 +40,7 @@ get_header();
 </form>
 
 <div class="thumbnails-container">
-    <div class="row">
+    <div class="row" id="image-row">
         <?php
         $args = array(
             'post_type' => 'photo', // Votre type de contenu personnalisé
@@ -76,6 +76,7 @@ get_header();
         endif;
         ?>
     </div>
+    <button id="load-more">Charger plus</button>
 </div>
 
 <?php
