@@ -137,27 +137,26 @@ line-height: 142.18px;
 
 /* MODALE EN PAUSE */ 
 /* Style de la modale */
+/* Style de la modal */
 .modal {
-  display: none; 
-  position: fixed; /* Permet de positionner la modale par rapport à la fenêtre du navigateur */
-  z-index: 1; /* Assure que la modale s'affiche au-dessus du reste du contenu */
+  display: none; /* Par défaut, la modal est cachée */
+  position: fixed; /* Positionnement fixe pour rester au-dessus du contenu */
+  z-index: 1; /* Empiler au-dessus de tout autre contenu */
   left: 0;
   top: 0;
-  width: 100%; /* La modale couvre toute la largeur de l'écran */
-  height: 100%; /* La modale couvre toute la hauteur de l'écran */
-  overflow: auto; /* Ajoute un défilement si nécessaire */
-  background-color: rgb(0,0,0); /* Fond noir avec opacité */
-  background-color: rgba(0,0,0,0.4); /* Fond noir semi-transparent */
+  width: 100%; /* Largeur de la modal à 100% de la fenêtre */
+  height: 100%; /* Hauteur de la modal à 100% de la fenêtre */
+  overflow: auto; /* Ajout de défilement si le contenu dépasse la fenêtre */
+  background-color: rgba(0,0,0,0.4); /* Fonds semi-transparent */
 }
 
-/* Contenu de la modale */
+/* Style du contenu de la modal */
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* Centre la modale verticalement et horizontalement */
+  margin: 15% auto; /* Centrer verticalement */
   padding: 20px;
   border: 1px solid #888;
-  width: 597px; /* Largeur de la modale */
-  height: 769px; /* Hauteur de la modale */
+  width: 80%; /* Largeur de la modal */
 }
 
 /* Style pour le bouton de fermeture */
@@ -171,16 +170,11 @@ line-height: 142.18px;
 .close:hover,
 .close:focus {
   color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
-
-
-/* MODALE */
-.contact-img{
+/* .contact-img{
 width: 886px;
 height: 106px;
-}
+} */
 
 
 
@@ -198,7 +192,7 @@ height: 106px;
   margin-top: 800px;
 }
 .entry-content img{
-margin-left: 100px;
+/* margin-left: 100px; */
 }
 
 /* Styles pour le pied de page de l'article */
@@ -209,27 +203,69 @@ margin-left: 100px;
 
 
 /*Gallerie*/
+.gallery-container{
+  width:1028px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ .select-container{
+  margin-bottom: 100px;
+
+}
 
 .thumbnails-container .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0; /* Supprime l'espace entre les colonnes */
+
 }
 
 .thumbnails-container .column {
-  width: 564px;
+  width: 514px;
   height: 495px;
-  margin-bottom: 10px; /* Espace vertical entre les lignes */
-  box-sizing: border-box; /* Inclure les bordures et les marges dans la largeur */
-  overflow: hidden; /* Masquer tout contenu dépassant de la colonne */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .custom-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+} 
+
+
+/* Stylisation des selects */
+
+.select-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+
 }
+
+.left-select {
+  width: 240px; 
+
+}
+
+.right-select {
+  width: 240px; 
+  margin-left: 271px;
+}
+
+.select-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Stylisation du bouton "Charger plus" */
+#load-more {
+  clear: both;
+  margin-top: 20px;
+}
+
 
 
 

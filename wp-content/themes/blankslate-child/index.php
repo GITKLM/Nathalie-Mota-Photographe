@@ -1,9 +1,10 @@
 <?php
 get_header();
 ?>
-
+<div class="gallery-container">
+<div class="select-container">
 <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="GET">
-    <select name="category">
+    <select name="category" class="left-select">
         <option value="">CATÉGORIES</option>
         <?php
         // Récupérer toutes les catégories de votre taxonomie "catégorie"
@@ -13,17 +14,17 @@ get_header();
         }
         ?>
     </select>
-    <select name="format">
+    <select name="format" class="left-select">
         <option value="">FORMATS</option>
         <?php
         // Récupérer toutes les options de votre champ personnalisé "format" ACF
-        $formats = get_field_object( 'format', 'option' );
+        $formats = get_field_object( 'format' );
         foreach ( $formats['choices'] as $value => $label ) {
             echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $label ) . '</option>';
         }
         ?>
     </select>
-    <select name="type_reference">
+    <select name="type_reference" class="right-select">
     <option value="">TRIER PAR</option>
     <?php
     // Récupérer tous les posts triés par date
@@ -37,8 +38,9 @@ get_header();
     if ( $query->have_posts() ) :
         while ( $query->have_posts() ) :
             $query->the_post();
-            echo '<option value="' . esc_attr( get_the_ID() ) . '">' . esc_html( get_the_title() ) . '</option>';
+            echo '<option value="' . esc_attr( get_the_ID() ) . '">' . esc_html( get_the_title() ) . ' - ' . esc_html( get_the_date() ) . '</option>';
         endwhile;
+        
         wp_reset_postdata();
     endif;
     ?>
@@ -46,7 +48,7 @@ get_header();
 
     <!-- <button type="submit">Filtrer</button> -->
 </form>
-
+</div>
 <div class="thumbnails-container">
     <div class="row" id="image-row">
         <?php
@@ -86,7 +88,7 @@ get_header();
     </div>
     <button id="load-more">Charger plus</button>
 </div>
-
+</div>
 <?php
 get_footer();
 ?>

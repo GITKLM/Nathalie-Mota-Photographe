@@ -12,22 +12,19 @@ Template Name: Formulaire
     <title>Formulaire</title>
 </head>
 <body>
+
+
+<!-- La modal -->
 <div id="myModal" class="modal">
+  <!-- Contenu de la modal -->
   <div class="modal-content">
-    <!-- Contenu de votre modale -->
+    <!-- Bouton pour fermer la modal -->
     <span class="close">&times;</span>
-    <img src="<?php echo get_stylesheet_directory_uri() . '/images/Contact header.png'; ?>" alt="contact-img" class="contact-img">
-    <?php
-// Incluez le fichier wp-load.php pour accéder aux fonctionnalités de WordPress
-include_once("wp-load.php");
-
-// Utilisez la fonction do_shortcode() pour ajouter le shortcode dans votre fichier .php
-echo do_shortcode('[contact-form-7 id="23ee927" title="Formulaire-modale"]');
-?>
-
-    <p>Ca charge ??</p>
+    <!-- Contenu du formulaire -->
+    <?php echo do_shortcode('[contact-form-7 id="23ee927" title="Formulaire-modale"]'); ?>
   </div>
 </div>
+
 
 </body>
 </html>

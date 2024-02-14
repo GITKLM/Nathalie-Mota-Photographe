@@ -22,8 +22,6 @@ closeButton.addEventListener('click', function() {
 });
 
 
-
-
 /* FILTRE */
 jQuery(document).ready(function($) {
   // Lorsqu'un élément de la liste est sélectionné
