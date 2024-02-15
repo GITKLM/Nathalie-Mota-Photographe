@@ -1,24 +1,23 @@
 <?php
-/*
-Template Name: Mes Photos
-*/
-get_header(); ?>
+// Affichage personnalisé pour les articles individuels
+?>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <div class="entry-content">
-            <?php the_content(); ?>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-        </div><!-- .entry-content -->
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <header class="entry-header">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+        <div class="entry-meta">
+            <span class="posted-on"><?php echo get_the_date(); ?></span>
+            <span class="byline"><?php esc_html_e( 'by', 'text-domain' ); ?> <?php the_author(); ?></span>
+        </div>
+    </header><!-- .entry-header -->
 
-        <?php if ( comments_open() || get_comments_number() ) :
-            comments_template();
-        endif; ?>
-    </article><!-- #post-<?php the_ID(); ?> -->
-<?php endwhile; endif; ?>
+    <div class="entry-content">
+        <?php the_content(); ?>
+    </div><!-- .entry-content -->
 
-<footer class="footer">
-    <?php get_template_part( 'nav', 'below-single' ); ?>
-</footer>
-
-<?php get_footer(); ?>
+    <?php if ( comments_open() && ! post_password_required() ) : ?>
+        <div class="comments-area">
+            <?php comments_template(); ?>
+        </div><!-- .comments-area -->
+    <?php endif; ?>
+</article><!-- #post-<?php the_ID(); ?> -->
