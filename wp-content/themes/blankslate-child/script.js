@@ -1,6 +1,5 @@
 
 /* MODALE */
-
 document.addEventListener("DOMContentLoaded", function() {
   // Récupérer le bouton et la modale
   var btnModal = document.getElementById("btnModal");
@@ -83,4 +82,5 @@ jQuery(document).ready(function($) {
 // });
 
 
+/* TRIE */
 

@@ -342,16 +342,23 @@ figure {
 
 .flex-item {
   flex: 1;
-}
-.entry-header{
-margin-top: 31%;
+  border: 1px solid red;
+  align-self: flex-end; /* Positionnement en bas */
 }
 
-.contact-container{
-  display: flex;
-justify-content: space-between;
-margin: 20px 0px;
+.entry-header {
+  /* Styles pour l'en-tête si nécessaire */
 }
-#btnContact{
-padding: 20px 100px;
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
+#btnContact {
+  padding: 20px 100px;
+}
+.flex-item figure{
+  margin-bottom: 40px;
 }

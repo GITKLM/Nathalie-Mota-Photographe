@@ -14,37 +14,38 @@ get_header();
         }
         ?>
     </select>
-    <select name="format" class="left-select">
-        <option value="">FORMATS</option>
-        <?php
-        // Récupérer toutes les options de votre champ personnalisé "format" ACF
-        $formats = get_field_object( 'format' );
-        foreach ( $formats['choices'] as $value => $label ) {
-            echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $label ) . '</option>';
-        }
-        ?>
-    </select>
-    <select name="type_reference" class="right-select">
+<select name="format" class="left-select">
+    <option value="">FORMATS</option>
+    <?php
+    // Récupérer toutes les catégories de votre taxonomie "format" (ou tout autre nom de taxonomie utilisé pour vos formats)
+    $formats = get_terms( array(
+        'taxonomy' => 'format', // Assurez-vous de spécifier le bon nom de la taxonomie ici
+        'hide_empty' => false, // Afficher également les termes qui n'ont aucun contenu associé
+    ) );
+    foreach ( $formats as $format ) {
+        echo '<option value="' . esc_attr( $format->slug ) . '">' . esc_html( $format->name ) . '</option>';
+    }
+    ?>
+</select>
+
+<select name="type_reference" class="right-select">
     <option value="">TRIER PAR</option>
     <?php
-    // Récupérer tous les posts triés par date
-    $args = array(
-        'post_type' => 'post', // Remplacez "post" par le type de post que vous souhaitez trier
-        'orderby' => 'date',
+    // Récupérer tous les termes de votre taxonomie "annee"
+    $terms = get_terms( array(
+        'taxonomy' => 'annee', // Remplacez "annee" par le slug de votre taxonomie créée avec CPT UI
+        'orderby' => 'name', // Vous pouvez changer l'ordre de tri si nécessaire
         'order' => 'DESC', // Vous pouvez changer pour 'ASC' si vous voulez trier par ordre ascendant
-        'posts_per_page' => -1, // Récupérer tous les posts, vous pouvez ajuster ce nombre selon vos besoins
-    );
-    $query = new WP_Query( $args );
-    if ( $query->have_posts() ) :
-        while ( $query->have_posts() ) :
-            $query->the_post();
-            echo '<option value="' . esc_attr( get_the_ID() ) . '">' . esc_html( get_the_title() ) . ' - ' . esc_html( get_the_date() ) . '</option>';
-        endwhile;
-        
-        wp_reset_postdata();
+        'hide_empty' => false, // Afficher également les termes qui n'ont aucun contenu associé
+    ) );
+    if ( !empty( $terms ) && !is_wp_error( $terms ) ) :
+        foreach ( $terms as $term ) :
+            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+        endforeach;
     endif;
     ?>
 </select>
+
 
     <!-- <button type="submit">Filtrer</button> -->
 </form>
