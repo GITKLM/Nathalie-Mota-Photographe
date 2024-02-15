@@ -54,7 +54,9 @@ body {
     max-height: 5000px;
   }
   main{
-    margin: 30px;
+margin-left: 150px;
+margin-right: 150px;
+
   }
   /*  HEADER */
 #branding{
@@ -301,3 +303,36 @@ height: 106px;
 .column:hover .thumbnail-title {
   opacity: 1; 
 } */
+
+
+/*  ARTICLE TEMPLATE  */
+
+.article {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Diviser la largeur de la page en deux colonnes de largeur égale */
+  gap: 20px; /* Espacement entre les éléments */
+}
+
+.article-image {
+  grid-column: 2; /* Positionner l'image sur la deuxième colonne */
+}
+
+.article-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-content {
+  grid-column: 1; /* Positionner le contenu texte sur la première colonne */
+}
+
+.entry-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.article-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}

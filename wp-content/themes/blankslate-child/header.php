@@ -32,9 +32,12 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </nav>
 
 </div>
+
+<?php if (!is_single()) :/*supprimer la banner quand article*/?>
+    
 <div class="banner">
 <img src="<?php echo get_stylesheet_directory_uri() . '/images/Titre header.png'; ?>" alt="Logo" class="image-with-padding">
-
+<?php endif; ?>
 </div>
 
 </header>
