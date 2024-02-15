@@ -281,7 +281,62 @@ height: 106px;
 
 
 /*  TEST HOVER Gallerie */ 
+.thumbnail-container {
+  position: relative;
+  overflow: hidden;
+}
 
+.thumbnail-container:hover .thumbnail-title {
+  opacity: 1;
+}
+
+.thumbnail-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 92%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.thumbnail-title p {
+  margin: 0;
+}
+
+.categories-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories-list li {
+  display: inline;
+  margin-left: 10px;
+}
+
+
+
+.thumbnail-container:hover .centered-image {
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Assurez-vous que l'image centrée est sous la catégorie */
+}
+
+.centered-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 /* .custom-thumbnail:hover{
 
 }

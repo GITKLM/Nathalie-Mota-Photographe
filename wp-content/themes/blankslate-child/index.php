@@ -51,26 +51,30 @@ get_header();
 </form>
 </div>
 <div class="thumbnails-container">
-    <div class="row" id="image-row">
-        <?php
-        $args = array(
-            'post_type' => 'photo', // Votre type de contenu personnalisé
-            'posts_per_page' => -1, // Afficher tous les éléments
-        );
+<div class="row" id="image-row">
+    <?php
+    $args = array(
+        'post_type' => 'photo', // Votre type de contenu personnalisé
+        'posts_per_page' => -1, // Afficher tous les éléments
+    );
 
-        // Récupérer les éléments en fonction des paramètres de requête
-        $photos_query = new WP_Query( $args );
+    // Récupérer les éléments en fonction des paramètres de requête
+    $photos_query = new WP_Query($args);
 
-        // Afficher les éléments récupérés
-        if ( $photos_query->have_posts() ) :
-            $count = 0;
-            while ( $photos_query->have_posts() ) : $photos_query->the_post();
-                // Afficher le thumbnail de chaque article
-                if ($count % 2 === 0) {
-                    echo '</div><div class="row">';
-                }
-                ?>
-                <div class="column">
+    // Afficher les éléments récupérés
+    if ($photos_query->have_posts()) :
+        $count = 0;
+        while ($photos_query->have_posts()) : $photos_query->the_post();
+            // Récupérer les catégories associées à la photo
+            $categories = get_the_terms(get_the_ID(), 'categorie'); // Remplacez 'nom_de_votre_taxonomie' par le nom de votre taxonomie
+
+            // Afficher le thumbnail de chaque article
+            if ($count % 2 === 0) {
+                echo '</div><div class="row">';
+            }
+            ?>
+            <div class="column">
+                <div class="thumbnail-container">
                     <?php
                     // Afficher le thumbnail
                     the_post_thumbnail(
@@ -79,18 +83,30 @@ get_header();
                     );
                     ?>
                     <div class="thumbnail-title">
-                        <?php the_title(); ?>
+                        <p><?php the_title(); ?></p>
+                        <?php
+                        // Afficher les catégories
+                        if ($categories) {
+                            echo '<ul class="categories-list">';
+                            foreach ($categories as $category) {
+                                echo '<li>' . $category->name . '</li>';
+                            }
+                            echo '</ul>';
+                        }
+                        ?>
                     </div>
+                    <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="">
                 </div>
-                <?php
-                $count++;
-            endwhile;
-            wp_reset_postdata(); // Réinitialiser les données de publication
-        else :
-            echo 'Aucun élément trouvé.';
-        endif;
-        ?>
-    </div>
+            </div>
+            <?php
+            $count++;
+        endwhile;
+        wp_reset_postdata(); // Réinitialiser les données de publication
+    else :
+        echo 'Aucun élément trouvé.';
+    endif;
+    ?>
+</div>
     <button id="load-more">Charger plus</button>
 </div>
 
