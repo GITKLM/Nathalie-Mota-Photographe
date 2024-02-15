@@ -71,11 +71,15 @@ get_header();
                 ?>
                 <div class="column">
                     <?php
+                    // Afficher le thumbnail
                     the_post_thumbnail(
                         array(564, 495),
                         array('class' => 'custom-thumbnail')
                     );
                     ?>
+                    <div class="thumbnail-title">
+                        <?php the_title(); ?>
+                    </div>
                 </div>
                 <?php
                 $count++;
@@ -88,6 +92,9 @@ get_header();
     </div>
     <button id="load-more">Charger plus</button>
 </div>
+
+
+
 </div>
 <?php
 get_footer();

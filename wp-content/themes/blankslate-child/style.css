@@ -95,6 +95,7 @@ body {
     height: 100vh;
     max-width: 1440px;
     max-height: 966px;
+    margin-bottom: 200px;
   }
 /* h1{
   font-weight: 700;
@@ -135,36 +136,45 @@ line-height: 142.18px;
 }
 
 
-/* MODALE EN PAUSE */ 
+/* MODALE */ 
 /* Style de la modale */
-/* Style de la modal */
-.modal {
-  display: none; /* Par défaut, la modal est cachée */
-  position: fixed; /* Positionnement fixe pour rester au-dessus du contenu */
-  z-index: 1; /* Empiler au-dessus de tout autre contenu */
-  left: 0;
-  top: 0;
-  width: 100%; /* Largeur de la modal à 100% de la fenêtre */
-  height: 100%; /* Hauteur de la modal à 100% de la fenêtre */
-  overflow: auto; /* Ajout de défilement si le contenu dépasse la fenêtre */
-  background-color: rgba(0,0,0,0.4); /* Fonds semi-transparent */
-}
 
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 /* Style du contenu de la modal */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* Centrer verticalement */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Largeur de la modal */
+  margin-top: 20px;
+
+  border: 5px solid black;
+  width: 597px;
+  height: 769px;
 }
 
+.modal-content img{
+  width: 886px;
+  height: 106px;
+}
 /* Style pour le bouton de fermeture */
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -180,16 +190,16 @@ height: 106px;
 
 /* TEST Styles pour le titre de l'article */
 .entry-title {
-  font-size: 64px;
-  color: pink;
+  /* font-size: 64px;
+  color: pink; */
 }
 
 /* Styles pour le contenu de l'article */
 .entry-content {
-  font-size: 16px;
+  /* font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
-  margin-top: 800px;
+  margin-top: 800px; */
 }
 .entry-content img{
 /* margin-left: 100px; */
@@ -197,8 +207,8 @@ height: 106px;
 
 /* Styles pour le pied de page de l'article */
 .entry-footer {
-  font-style: italic;
-  color: #666;
+  /* font-style: italic;
+  color: #666; */
 }
 
 
@@ -268,4 +278,26 @@ height: 106px;
 
 
 
+/*  TEST HOVER Gallerie */ 
 
+/* .custom-thumbnail:hover{
+
+}
+.thumbnail-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease; 
+}
+
+.column:hover .thumbnail-title {
+  opacity: 1; 
+} */

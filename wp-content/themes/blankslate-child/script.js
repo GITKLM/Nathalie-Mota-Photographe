@@ -1,24 +1,45 @@
 
 /* MODALE */
 
-// Sélectionnez le lien de menu vers la modale de contact
-var modalLink = document.querySelector('nav a[href="#modal-contact"]');
+document.addEventListener("DOMContentLoaded", function() {
+  // Récupérer le bouton et la modale
+  var btnModal = document.getElementById("btnModal");
+  var modal = document.getElementById("myModal");
 
-// Sélectionnez la modale de contact
-var modal = document.getElementById('myModal');
+  // Ajouter un gestionnaire d'événement de clic au bouton
+  btnModal.addEventListener("click", function() {
+      // Afficher la modale
+      modal.style.display = "block";
+  });
 
-// Sélectionnez le bouton de fermeture de la modale
-var closeButton = modal.querySelector('.close');
-
-// Ajoutez un gestionnaire d'événements pour ouvrir la modale lorsque le lien de menu est cliqué
-modalLink.addEventListener('click', function(event) {
-  event.preventDefault(); // Empêche le comportement par défaut du lien
-  modal.style.display = 'block'; // Affiche la modale de contact
+  // Ajouter un gestionnaire d'événement pour fermer la modale en cliquant en dehors de celle-ci
+  window.addEventListener("click", function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  });
 });
 
-// Ajoutez un gestionnaire d'événements pour fermer la modale lorsque le bouton de fermeture est cliqué
-closeButton.addEventListener('click', function() {
-  modal.style.display = 'none'; // Masque la modale de contact
+/* MODALE CONTACT CLIC */
+jQuery(document).ready(function($) {
+  // Ajoute un gestionnaire d'événements au clic sur l'élément de menu "Contact"
+  $('#menu-item-136').on('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+
+      // Affiche la modale
+      $('#myModal').css('display', 'block');
+  });
+     // Fermer la modale au clic sur l'élément contenant la classe "close"
+     $('.close').on('click', function() {
+      $('#myModal').css('display', 'none'); // Cacher la modale
+  });
+
+  // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
+  $(window).on('click', function(event) {
+      if ($(event.target).is('#myModal')) {
+          $('#myModal').css('display', 'none');
+      }
+  });
 });
 
 
