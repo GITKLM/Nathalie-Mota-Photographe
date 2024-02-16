@@ -185,16 +185,17 @@ line-height: 142.18px;
 }
 .wpcf7-form{
   width: 270px;
+margin-left: 27%;
 }
 .wpcf7-form-control-wrap{
+
   width: 263px;
   height: 63px;
 
 }
 #wpcf7-f26-o1{
-  display: flex;
-  justify-content: center;
   height: 600px;
+
 }
 .wpcf7-form-control{
   border-radius: 5px;

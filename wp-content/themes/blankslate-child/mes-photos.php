@@ -14,7 +14,7 @@
             <img src="<?php echo get_stylesheet_directory_uri() . '/images/Line 3.png'; ?>" alt="petite ligne">
             <div class="contact-container">
                 <p>Cette photo vous intéresse ?</p>
-                <button id="btnContact">CONTACT</button>
+                <button class="modalBtn">CONTACT</button>
             </div>
             <!-- <span class="posted-on"><?php echo get_the_date(); ?></span>
             <span class="byline"><?php esc_html_e( 'by', 'text-domain' ); ?> <?php the_author(); ?></span> -->

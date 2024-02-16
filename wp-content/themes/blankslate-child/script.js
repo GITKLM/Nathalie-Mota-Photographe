@@ -21,25 +21,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* MODALE CONTACT CLIC */
 jQuery(document).ready(function($) {
-  // Ajoute un gestionnaire d'événements au clic sur l'élément de menu "Contact"
-  $('#menu-item-136').on('click', function(event) {
-      event.preventDefault(); // Empêche le comportement par défaut du lien
-
-      // Affiche la modale
-      $('#myModal').css('display', 'block');
+    // Ajoute un gestionnaire d'événements au clic sur l'élément de menu "Contact"
+    $('#menu-item-136').on('click', function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+  
+        // Affiche la modale
+        $('#myModal').css('display', 'block');
+    });
+  
+    // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
+    $(window).on('click', function(event) {
+        if ($(event.target).is('#myModal')) {
+            $('#myModal').css('display', 'none');
+        }
+    });
+  
+    // Ajoute un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
+    $('.modalBtn').on('click', function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+        $('#myModal').css('display', 'block');
+    });
   });
-     // Fermer la modale au clic sur l'élément contenant la classe "close"
-     $('.close').on('click', function() {
-      $('#myModal').css('display', 'none'); // Cacher la modale
-  });
-
-  // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
-  $(window).on('click', function(event) {
-      if ($(event.target).is('#myModal')) {
-          $('#myModal').css('display', 'none');
-      }
-  });
-});
+  
 
 
 /* FILTRE */
