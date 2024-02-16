@@ -273,14 +273,20 @@ height: 106px;
 }
 
 /* Stylisation du bouton "Charger plus" */
+.load-more-container{
+  display: flex;
+justify-content: center;
+}
 #load-more {
   clear: both;
   margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px 100px;
 }
 
 
 
-/*  TEST HOVER Gallerie */ 
+/*  HOVER Gallerie */ 
 .thumbnail-container {
   position: relative;
   overflow: hidden;
@@ -330,67 +336,27 @@ height: 106px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; /* Assurez-vous que l'image centrée est sous la catégorie */
+  z-index: 1;
 }
 
 .centered-image {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-/* .custom-thumbnail:hover{
 
-}
-.thumbnail-title {
+.thumbnail-container:hover .top-image {
+  opacity: 1;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  top: 10px;
+  right: 30px;
+  z-index: 1;
+}
+
+.top-image {
   opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.3s ease; 
+  transition: opacity 0.3s ease;
 }
 
-.column:hover .thumbnail-title {
-  opacity: 1; 
-} */
-
-
-/*  ARTICLE TEMPLATE  */
-
-/* .article {
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 20px; 
-}
-
-.article-image {
-  grid-column: 2;
-}
-
-figure {
-  max-width: 585px;
-  max-height: 844px;
-}
-
-.article-content {
-  grid-column: 1;
-}
-
-.entry-title {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.article-content p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-} */
 .flex-container {
   display: flex;
 }
@@ -398,11 +364,11 @@ figure {
 .flex-item {
   flex: 1;
   border: 1px solid red;
-  align-self: flex-end; /* Positionnement en bas */
+  align-self: flex-end;
 }
 
 .entry-header {
-  /* Styles pour l'en-tête si nécessaire */
+  /* Styles pour HEADER */
 }
 
 .contact-container {

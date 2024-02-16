@@ -82,6 +82,7 @@ get_header();
                         array('class' => 'custom-thumbnail')
                     );
                     ?>
+                    <img class="top-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
                     <div class="thumbnail-title">
                         <p><?php the_title(); ?></p>
                         <?php
@@ -95,7 +96,7 @@ get_header();
                         }
                         ?>
                     </div>
-                    <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="">
+                    <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
                 </div>
             </div>
             <?php
@@ -107,7 +108,9 @@ get_header();
     endif;
     ?>
 </div>
+<div class="load-more-container">
     <button id="load-more">Charger plus</button>
+</div>
 </div>
 
 
