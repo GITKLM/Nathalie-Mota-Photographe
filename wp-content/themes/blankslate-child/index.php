@@ -74,6 +74,7 @@ get_header();
             }
             ?>
             <div class="column">
+            <a href="<?php the_permalink(); ?>" class="thumbnail-link">
                 <div class="thumbnail-container">
                     <?php
                     // Afficher le thumbnail
@@ -98,6 +99,7 @@ get_header();
                     </div>
                     <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
                 </div>
+                </a>
             </div>
             <?php
             $count++;

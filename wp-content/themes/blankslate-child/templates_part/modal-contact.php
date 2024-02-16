@@ -17,11 +17,12 @@ Template Name: Formulaire
 <!-- La modal -->
 <div id="myModal" class="modal">
   <!-- Contenu de la modal -->
+  
   <div class="modal-content">
     <!-- Bouton pour fermer la modal -->
-    <span class="close">&times;</span>
+    <!-- <span class="close">&times;</span> -->
     <!-- ICI -->
-    <img src="<?php echo get_stylesheet_directory_uri() . '/images/Contact_header.png'; ?>" alt="">
+    <img src="<?php echo get_stylesheet_directory_uri() . '/images/Contact header.png'; ?>" alt="">
     <!-- <img src="/images/Titre header.png" alt=""> -->
      <?php echo do_shortcode('[contact-form-7 id="23ee927" title="Formulaire-modale"]'); ?>
      
