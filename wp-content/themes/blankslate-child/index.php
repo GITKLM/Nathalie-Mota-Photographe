@@ -50,6 +50,9 @@ get_header();
     <!-- <button type="submit">Filtrer</button> -->
 </form>
 </div>
+
+
+
 <div class="thumbnails-container">
 <div class="row" id="image-row">
     <?php

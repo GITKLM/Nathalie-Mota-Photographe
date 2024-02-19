@@ -99,15 +99,7 @@ margin-right: 150px;
     max-height: 966px;
     margin-bottom: 200px;
   }
-/* h1{
-  font-weight: 700;
 
-  color: transparent; 
-    -webkit-text-stroke: 3px #FFFFFF;
-  font-size: 106px;
-line-height: 142.18px;
-
-} */
   /*  FOOTER */
 
   footer {
@@ -170,19 +162,7 @@ line-height: 142.18px;
   width: 597px;
   height: 106px;
 }
-/* Style pour le bouton de fermeture */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.close:hover,
-.close:focus {
-  color: black; 
-}
 .wpcf7-form{
   width: 270px;
 margin-left: 27%;
@@ -427,4 +407,23 @@ border: 1px solid black;
 }
 .footer p {
   margin-top: 60px;
+}
+
+
+/* lightBox */ 
+
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

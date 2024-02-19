@@ -44,6 +44,8 @@ jQuery(document).ready(function($) {
   });
   
 
+  
+
 /* REF PHOTO */
 jQuery(document).ready(function($) {
     // Ajoute un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
@@ -111,18 +113,8 @@ jQuery(document).ready(function($) {
 
 
 /* Nav article */
-jQuery(document).ready(function($) {
-    // Gestionnaire d'événements pour le clic sur la flèche précédente
-    $('.nav-previous').on('click', function() {
-        window.location.href = $(this).find('a').attr('href'); // Rediriger vers le lien de la flèche précédente
-    });
-
-    // Gestionnaire d'événements pour le clic sur la flèche suivante
-    $('.nav-next').on('click', function() {
-        window.location.href = $(this).find('a').attr('href'); // Rediriger vers le lien de la flèche suivante
-    });
-});
 
 
 
+/* LightBox */
 

@@ -69,19 +69,19 @@
                     
                 </div>
                 <div id="arrow-container">
-    <div class="prev-arrow">
-        <?php
-        $prev_text = '<span class="meta-nav"><img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/Line 6.png" alt=""></span>';
-        previous_post_link('%link', $prev_text);
-        ?>
-    </div>
-    <div class="next-arrow">
-        <?php
-        $next_text = '<span class="meta-nav"><img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/Line 7.png" alt=""></span>';
-        next_post_link('%link', $next_text);
-        ?>
-    </div>
-</div>
+                    <div class="prev-arrow">
+                        <?php
+                        $prev_text = '<span class="meta-nav"><img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/Line 6.png" alt=""></span>';
+                        previous_post_link('%link', $prev_text);
+                        ?>
+                    </div>
+                    <div class="next-arrow">
+                        <?php
+                        $next_text = '<span class="meta-nav"><img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/Line 7.png" alt=""></span>';
+                        next_post_link('%link', $next_text);
+                        ?>
+                    </div>
+                </div>
 
             </div>
         </div>
