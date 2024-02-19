@@ -110,5 +110,19 @@ jQuery(document).ready(function($) {
 // });
 
 
-/* TRIE */
+/* Nav article */
+jQuery(document).ready(function($) {
+    // Gestionnaire d'événements pour le clic sur la flèche précédente
+    $('.nav-previous').on('click', function() {
+        window.location.href = $(this).find('a').attr('href'); // Rediriger vers le lien de la flèche précédente
+    });
+
+    // Gestionnaire d'événements pour le clic sur la flèche suivante
+    $('.nav-next').on('click', function() {
+        window.location.href = $(this).find('a').attr('href'); // Rediriger vers le lien de la flèche suivante
+    });
+});
+
+
+
 

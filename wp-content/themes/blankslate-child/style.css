@@ -399,9 +399,13 @@ justify-content: center;
   height: 69px;
   border: 1px solid black;
 }
-#arrow-container{
-  margin: 5px 0;
+#arrow-container {
   display: flex;
   justify-content: space-between;
 }
 
+.prev-arrow,
+.next-arrow {
+  flex: 1;
+  text-align: center;
+}
