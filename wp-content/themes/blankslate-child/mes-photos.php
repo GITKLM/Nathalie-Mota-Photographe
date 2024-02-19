@@ -56,13 +56,24 @@
             <img src="<?php echo get_stylesheet_directory_uri() . '/images/Line 3.png'; ?>" alt="petite ligne">
             <div class="contact-container">
                 <p>Cette photo vous intéresse ?</p>
-                <button class="modalBtn">CONTACT</button>
+                <button id="boutonModale" class="modalBtn">CONTACT</button>
             </div>
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
 
     <div class="entry-content flex-item">
         <?php the_content(); ?>
+        <div id="img-nav-container">
+            <div id="img-nav">
+                <div id="img-min">
+                    
+                </div>
+                <div id="arrow-container">
+                    <img id="img-previus" src="<?php echo get_stylesheet_directory_uri() . '/images/Line 6.png'; ?>" alt="">
+                    <img id="img-next" src="<?php echo get_stylesheet_directory_uri() . '/images/Line 7.png'; ?>" alt="">
+                </div>
+            </div>
+        </div>
     </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
 <footer class="footer">

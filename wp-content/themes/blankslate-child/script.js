@@ -44,6 +44,31 @@ jQuery(document).ready(function($) {
   });
   
 
+/* REF PHOTO */
+jQuery(document).ready(function($) {
+    // Ajoute un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
+    $('.modalBtn').on('click', function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+        
+        // Récupérer les références de l'article
+        var referencePhoto = reference_data.join(', ');
+        
+        // Remplir automatiquement le champ "RÉF. PHOTO" du formulaire Contact Form 7 avec les références récupérées
+        $('#photo-reference').val(referencePhoto);
+        
+        // Afficher la modale
+        $('#myModal').css('display', 'block');
+    });
+  
+    // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
+    $(window).on('click', function(event) {
+        if ($(event.target).is('#myModal')) {
+            $('#myModal').css('display', 'none');
+        }
+    });
+});
+
+
 
 /* FILTRE */
 jQuery(document).ready(function($) {

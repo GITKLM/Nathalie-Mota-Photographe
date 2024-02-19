@@ -181,7 +181,7 @@ line-height: 142.18px;
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: black; 
 }
 .wpcf7-form{
   width: 270px;
@@ -212,28 +212,6 @@ margin-left: 27%;
 
 .wpcf7-submit {
 padding: 20px 110px;
-}
-/* TEST Styles pour le titre de l'article */
-.entry-title {
-  /* font-size: 64px;
-  color: pink; */
-}
-
-/* Styles pour le contenu de l'article */
-.entry-content {
-  /* font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  margin-top: 800px; */
-}
-.entry-content img{
-/* margin-left: 100px; */
-}
-
-/* Styles pour le pied de page de l'article */
-.entry-footer {
-  /* font-style: italic;
-  color: #666; */
 }
 
 
@@ -352,7 +330,6 @@ justify-content: center;
 }
 
 
-
 .thumbnail-container:hover .centered-image {
   opacity: 1;
   position: absolute;
@@ -380,29 +357,51 @@ justify-content: center;
   transition: opacity 0.3s ease;
 }
 
-.flex-container {
-  display: flex;
-}
 
-.flex-item {
-  flex: 1;
-  border: 1px solid red;
-  align-self: flex-end;
-}
 
-.entry-header {
-  /* Styles pour HEADER */
-}
-
+/* Page article*/
+/*manque des éléments*/
 .contact-container {
   display: flex;
   justify-content: space-between;
   margin: 20px 0px;
 }
 
-#btnContact {
+.contact-container #boutonModale{
+  padding: 20px 105px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-item {
+  flex: 1;
+  align-self: flex-end;
+}
+
+
+/* #btnContact {
   padding: 20px 100px;
-}
+} */
 .flex-item figure{
-  margin-bottom: 40px;
+  margin-bottom: 12px;
 }
+#img-nav-container{
+  margin-bottom: 7px;
+  display: flex; /* Utilisation de flexbox sur le parent */
+  justify-content: flex-end;
+}
+
+#img-min{
+
+  width: 79px;
+  height: 69px;
+  border: 1px solid black;
+}
+#arrow-container{
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
