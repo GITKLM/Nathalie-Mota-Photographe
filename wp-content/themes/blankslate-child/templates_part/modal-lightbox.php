@@ -12,7 +12,18 @@ Template Name: Lightbox
 </head>
 <body>
 
-
+<!-- La modal -->
+<div id="myModa" class="moda">
+  <!-- Contenu de la modal -->
+  
+  <div class="modal-conten">
+    <!-- Bouton pour fermer la modal -->
+    <span class="close">&times;</span>
+    <!-- ICI -->
+    <!-- <img src="/images/Titre header.png" alt=""> -->
+     
+  </div>
+</div>
 
 </body>
 </html>

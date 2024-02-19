@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
 /* MODALE CONTACT CLIC */
 jQuery(document).ready(function($) {
     // Ajoute un gestionnaire d'événements au clic sur l'élément de menu "Contact"
@@ -117,4 +118,23 @@ jQuery(document).ready(function($) {
 
 
 /* LightBox */
+document.addEventListener("DOMContentLoaded", function() {
+    // Récupérer l'image et la modale
+    var openModalImage = document.getElementById("openModalImage");
+    var moda = document.getElementById("myModa");
+
+    // Ajouter un gestionnaire d'événement de clic à l'image
+    openModalImage.addEventListener("click", function() {
+        // Afficher la modale
+        moda.style.display = "block";
+    });
+
+    // Ajouter un gestionnaire d'événement de clic pour fermer la modale lorsque vous cliquez sur un élément avec la classe .close
+    var closeButton = moda.querySelector(".close");
+    closeButton.addEventListener("click", function() {
+        // Cacher la modale
+        moda.style.display = "none";
+    });
+});
+
 

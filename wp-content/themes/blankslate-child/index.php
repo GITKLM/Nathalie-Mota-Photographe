@@ -86,7 +86,10 @@ get_header();
                         array('class' => 'custom-thumbnail')
                     );
                     ?>
-                    <img class="top-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+                    
+                        <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+
+                    
                     <div class="thumbnail-title">
                         <p><?php the_title(); ?></p>
                         <?php
@@ -117,6 +120,8 @@ get_header();
     <button id="load-more">Charger plus</button>
 </div>
 </div>
+
+
 
 </div>
 <?php

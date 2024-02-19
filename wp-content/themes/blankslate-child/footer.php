@@ -12,8 +12,9 @@
 </div>
 <?php wp_footer(); ?>
    <!-- Inclure la modale de contact -->
-   <!-- <?php get_template_part( 'templates_part/modal-contact'); ?> -->
-   <button id="btnModal">CONTACT</button>
+<?php get_template_part( 'templates_part/modal-lightbox'); ?> 
+
+   <button id="btnModa">CONTACT</button>
 
 
 
