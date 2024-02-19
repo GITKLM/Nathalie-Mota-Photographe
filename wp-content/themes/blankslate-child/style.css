@@ -395,16 +395,11 @@ justify-content: center;
   gap: 20px;
   margin: 60px auto;
 }
-.autre-img-1{
+.autre-img-1, .autre-img-2{
 width: 564px;
 height: 495px;
-border: 1px solid black;
 }
-.autre-img-2{
-  width: 564px;
-  height: 495px;
-  border: 1px solid black;
-}
+
 .footer p {
   margin-top: 60px;
 }
