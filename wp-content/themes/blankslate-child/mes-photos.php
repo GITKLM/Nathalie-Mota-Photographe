@@ -89,8 +89,10 @@
 
 </article><!-- #post-<?php the_ID(); ?> -->
 <footer class="footer">
-    <?php get_template_part( 'nav', 'below-single' ); ?>
     <p>VOUS AIMEREZ AUSSI</p>
-    
+    <div class="autre-img-container">
+        <div class="autre-img-1"></div>
+        <div class="autre-img-2"></div>
+        </div>
 </footer>
 <?php get_footer(); ?>
