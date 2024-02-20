@@ -14,7 +14,7 @@
    <!-- Inclure la modale de contact -->
 <?php get_template_part( 'templates_part/modal-lightbox'); ?> 
 
-   <button id="btnModa">CONTACT</button>
+   <button id="btnModal">CONTACT</button>
 
 
 

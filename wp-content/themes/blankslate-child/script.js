@@ -1,23 +1,6 @@
 
 /* MODALE */
-document.addEventListener("DOMContentLoaded", function() {
-  // Récupérer le bouton et la modale
-  var btnModal = document.getElementById("btnModal");
-  var modal = document.getElementById("myModal");
 
-  // Ajouter un gestionnaire d'événement de clic au bouton
-  btnModal.addEventListener("click", function() {
-      // Afficher la modale
-      modal.style.display = "block";
-  });
-
-  // Ajouter un gestionnaire d'événement pour fermer la modale en cliquant en dehors de celle-ci
-  window.addEventListener("click", function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  });
-});
 
 
 /* MODALE CONTACT CLIC */
@@ -36,12 +19,7 @@ jQuery(document).ready(function($) {
             $('#myModal').css('display', 'none');
         }
     });
-  
-    // Ajoute un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
-    $('.modalBtn').on('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-        $('#myModal').css('display', 'block');
-    });
+
   });
   
 
@@ -84,33 +62,6 @@ jQuery(document).ready(function($) {
 
 /* TEST CHargement des images */
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   const imageRow = document.getElementById('image-row');
-//   const loadMoreButton = document.getElementById('load-more');
-//   const maxImagesPerPage = 8;
-//   let loadedImages = 0;
-
-//   function loadMoreImages() {
-//       const imagesToLoad = 8;
-//       for (let i = 0; i < imagesToLoad; i++) {
-//           if (loadedImages >= maxImagesPerPage) return;
-//           const imageContainer = document.createElement('div');
-//           imageContainer.classList.add('column');
-//           const image = document.createElement('img');
-//           image.src = 'URL_DE_L_IMAGE';
-//           image.alt = 'Description de l\'image';
-//           imageContainer.appendChild(image);
-//           imageRow.appendChild(imageContainer);
-//           loadedImages++;
-//       }
-//   }
-
-//   loadMoreButton.addEventListener('click', function() {
-//       loadMoreImages();
-//   });
-
-//   loadMoreImages();
-// });
 
 
 /* Nav article */
@@ -168,7 +119,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+/* CHARGEMENT SUPPLEMENTAIRE */
+ 
 
+    
 
 
 

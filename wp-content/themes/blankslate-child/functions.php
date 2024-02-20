@@ -38,4 +38,18 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_script');
 /* TEST FLECHES */
 
 
+
+
+// Charger AJAX
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+
+function my_enqueue_scripts() {
+    wp_enqueue_script('my-custom-script', get_template_directory_uri() . '/js/custom-script.js', array('jquery'), null, true);
+    wp_localize_script('my-custom-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
+}
+
+
+/* CHARGER + */
+
+
 ?>

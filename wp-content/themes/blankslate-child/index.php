@@ -58,7 +58,7 @@ get_header();
     <?php
     $args = array(
         'post_type' => 'photo', // Votre type de contenu personnalisé
-        'posts_per_page' => -1, // Afficher tous les éléments
+        'posts_per_page' => 8, // Afficher tous les éléments
     );
 
     // Récupérer les éléments en fonction des paramètres de requête
@@ -127,3 +127,10 @@ get_header();
 <?php
 get_footer();
 ?>
+<?php
+// Autres codes PHP ici...
+
+// Définition de l'URL AJAX
+// $ajax_url = admin_url('admin-ajax.php');
+?>
+
