@@ -1,27 +1,25 @@
-
 /* MODALE */
-
-
-
-/* MODALE CONTACT CLIC */
 jQuery(document).ready(function($) {
-    // Ajoute un gestionnaire d'événements au clic sur l'élément de menu "Contact"
-    $('#menu-item-136').on('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-  
-        // Affiche la modale
-        $('#myModal').css('display', 'block');
+    var btnModal = $('#btnModal');
+    var modal = $('#myModal');
+
+    btnModal.on('click', function() {
+        modal.css('display', 'block');
     });
-  
-    // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
+
     $(window).on('click', function(event) {
         if ($(event.target).is('#myModal')) {
-            $('#myModal').css('display', 'none');
+            modal.css('display', 'none');
         }
     });
 
-  });
-  
+    // MODALE CONTACT CLIC
+    $('#menu-item-136').on('click', function(event) {
+        event.preventDefault();
+        modal.css('display', 'block');
+    });
+
+});
 
   
 
@@ -69,24 +67,19 @@ jQuery(document).ready(function($) {
 
 
 /* LightBox */
-document.addEventListener("DOMContentLoaded", function() {
-    // Récupérer l'image et la modale
-    var openModalImage = document.getElementById("openModalImage");
-    var moda = document.getElementById("myModa");
+ document.addEventListener("DOMContentLoaded", function() {
+     var openModalImage = document.getElementById("openModalImage");
+     var moda = document.getElementById("myModa");
 
-    // Ajouter un gestionnaire d'événement de clic à l'image
-    openModalImage.addEventListener("click", function() {
-        // Afficher la modale
-        moda.style.display = "block";
-    });
+     openModalImage.addEventListener("click", function() {
+         moda.style.display = "block";
+     });
 
-    // Ajouter un gestionnaire d'événement de clic pour fermer la modale lorsque vous cliquez sur un élément avec la classe .close
-    var closeButton = moda.querySelector(".close");
-    closeButton.addEventListener("click", function() {
-        // Cacher la modale
-        moda.style.display = "none";
-    });
-});
+     var closeButton = moda.querySelector(".close");
+     closeButton.addEventListener("click", function() {
+         moda.style.display = "none";
+     });
+ });
 
 /* OEIL */
 document.addEventListener("DOMContentLoaded", function() {
