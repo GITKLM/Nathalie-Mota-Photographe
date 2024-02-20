@@ -268,15 +268,22 @@ justify-content: center;
 
 
 /*  HOVER Gallerie */ 
+
 .thumbnail-container {
   position: relative;
   overflow: hidden;
 }
+.thumbnail-container:hover {
 
-.thumbnail-container:hover .thumbnail-title {
-  opacity: 1;
+  z-index: 1;
 }
 
+.thumbnail-container:hover .thumbnail-title {
+
+  opacity: 1;
+  z-index: 1;
+}
+/* 
 .thumbnail-title {
   position: absolute;
   bottom: 0;
@@ -293,9 +300,12 @@ justify-content: center;
   justify-content: space-between;
   align-items: flex-end;
 }
+*/
+
 
 .thumbnail-title p {
   margin: 0;
+
 }
 
 .categories-list {

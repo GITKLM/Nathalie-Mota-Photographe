@@ -137,6 +137,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+/* OEIL */
+document.addEventListener("DOMContentLoaded", function() {
+    const centeredImage = document.querySelectorAll(".centered-image");
+    const thumbnailTitle = document.querySelectorAll(".thumbnail-title");
+
+    centeredImage.forEach(function(image, index) {
+        image.addEventListener("click", function() {
+            if (thumbnailTitle[index].style.display === "block") {
+                thumbnailTitle[index].style.display = "none";
+            } else {
+                thumbnailTitle[index].style.display = "block";
+                // Appliquer les styles CSS à thumbnail-title lors de son affichage
+                thumbnailTitle[index].style.position = "absolute";
+                thumbnailTitle[index].style.bottom = "0";
+                thumbnailTitle[index].style.left = "0";
+                thumbnailTitle[index].style.width = "92%";
+                thumbnailTitle[index].style.height = "100%";
+                thumbnailTitle[index].style.color = "#fff";
+                thumbnailTitle[index].style.padding = "10px";
+                thumbnailTitle[index].style.margin = "0";
+                thumbnailTitle[index].style.opacity = "1";
+                thumbnailTitle[index].style.transition = "opacity 0.3s ease";
+                thumbnailTitle[index].style.display = "flex";
+                thumbnailTitle[index].style.justifyContent = "space-between";
+                thumbnailTitle[index].style.alignItems = "flex-end";
+            }
+        });
+    });
+});
+
+
+
+
 
 
 

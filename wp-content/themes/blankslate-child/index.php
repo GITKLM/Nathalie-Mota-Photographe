@@ -90,7 +90,7 @@ get_header();
                         <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
                     
-                    <div class="thumbnail-title">
+                    <div class="thumbnail-title" style="display: none;">
                         <p><?php the_title(); ?></p>
                         <?php
                         // Afficher les catégories
