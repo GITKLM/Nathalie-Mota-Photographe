@@ -2,17 +2,7 @@
 
 
 /* CSS */
-function ajouter_css() {
-    wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css', array(), '1.0', 'all');
-}
-add_action('wp_enqueue_scripts', 'ajouter_css');
 
-
-/* JS */
-function theme_enqueue_scripts() {
-    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 
 /* REF PHOTOS MODALE */
@@ -24,48 +14,88 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 
 
-// Charger AJAX
-// add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
-
-// function my_enqueue_scripts() {
-//     wp_enqueue_script('my-custom-script', get_template_directory_uri() . '/script.js', array('jquery'), null, true);
-//     wp_localize_script('my-custom-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
-// }
 
 
 /* CHARGER + */
-// Ajoutez cela dans votre fichier functions.php ou un plugin
-function enqueue_custom_scripts() {
+
+
+
+/* TRIER */
+// Charger AJAX
+add_action('wp_enqueue_scripts', 'add_custom_scripts');
+
+function add_custom_scripts() {
+    // Enregistrer le script JavaScript
     wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), null, true);
-    wp_localize_script('custom-script', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+
+    // Localiser le script JavaScript avec ajaxurl
+    wp_localize_script('custom-script', 'custom_ajax', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
 }
-add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
+function filter_photos() {
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $format = isset($_POST['format']) ? $_POST['format'] : '';
+    $type_reference = isset($_POST['type_reference']) ? $_POST['type_reference'] : '';
 
-add_action('wp_ajax_load_more_photos', 'load_more_photos');
-add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
-
-function load_more_photos() {
-    $page = $_POST['page'];
     $args = array(
         'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'paged' => $page
+        'posts_per_page' => -1, // Récupérer tous les éléments
     );
+
+    // Ajouter les paramètres de taxonomie à la requête
+    if (!empty($category)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $category,
+        );
+    }
+
+    if (!empty($format)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        );
+    }
+
+    if (!empty($type_reference)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'annee',
+            'field' => 'slug',
+            'terms' => $type_reference,
+        );
+    }
+
+    // Récupérer les éléments en fonction des paramètres de requête
     $photos_query = new WP_Query($args);
-    
+
+    // Construire le HTML des photos filtrées
+    ob_start();
     if ($photos_query->have_posts()) :
         while ($photos_query->have_posts()) : $photos_query->the_post();
-            $categories = get_the_terms(get_the_ID(), 'categorie');
+            // Afficher le thumbnail de chaque article
             ?>
             <div class="column">
                 <div class="thumbnail-container">
-                    <?php the_post_thumbnail(array(564, 495), array('class' => 'custom-thumbnail')); ?>
+                    <?php
+                    // Afficher le thumbnail
+                    the_post_thumbnail(
+                        array(564, 495),
+                        array('class' => 'custom-thumbnail')
+                    );
+                    ?>
                     <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
                     <div class="thumbnail-title" style="display: none;">
                         <p><?php the_title(); ?></p>
                         <?php
+                        // Afficher les catégories
+                        $categories = get_the_terms(get_the_ID(), 'categorie');
                         if ($categories) {
                             echo '<ul class="categories-list">';
                             foreach ($categories as $category) {
@@ -80,12 +110,25 @@ function load_more_photos() {
             </div>
             <?php
         endwhile;
-        wp_reset_postdata();
+        wp_reset_postdata(); // Réinitialiser les données de publication
     else :
-        echo 'No more posts';
+        echo 'Aucun élément trouvé.';
     endif;
-    die();
+    $content = ob_get_clean();
+
+    echo $content;
+
+    wp_die();
 }
 
 
+
+
+
+
 ?>
+
+
+
+
+

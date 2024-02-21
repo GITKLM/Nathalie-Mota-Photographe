@@ -51,18 +51,41 @@ jQuery(document).ready(function($) {
 
 /* FILTRE */
 jQuery(document).ready(function($) {
-  // Lorsqu'un élément de la liste est sélectionné
-  $('.filter-select').change(function() {
-      // Soumettre automatiquement le formulaire
-      $('#filter-form').submit();
-  });
+    // Fonction pour gérer les changements de sélection
+    $('.select-container select').change(function() {
+        var category = $('select[name="category"]').val();
+        var format = $('select[name="format"]').val();
+        var type_reference = $('select[name="type_reference"]').val();
+
+        // Envoyer une requête Ajax à WordPress
+        $.ajax({
+            url: custom_ajax.ajaxurl, // Utilisation de custom_ajax.ajaxurl
+            type: 'POST',
+            data: {
+                action: 'filter_photos', // Action à appeler dans votre fichier functions.php
+                category: category,
+                format: format,
+                type_reference: type_reference,
+            },
+            success: function(response) {
+                // Mettre à jour la section des photos avec la réponse
+                $('.thumbnails-container .row').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
 });
 
-/* TEST CHargement des images */
 
 
 
-/* Nav article */
+
+
+
+
+
 
 
 
@@ -117,33 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* CHARGEMENT SUPPLEMENTAIRE */
-jQuery(document).ready(function($) {
-    var page = 1;
-    var loading = false;
-    
-    $('#load-more').on('click', function() {
-        if (!loading) {
-            loading = true;
-            page++;
-            var data = {
-                'action': 'load_more_photos',
-                'page': page
-            };
-            $.ajax({
-                url: ajax_object.ajax_url, // Utilisation de ajax_object.ajax_url
-                type: 'POST',
-                data: data,
-                success: function(response) {
-                    $('#image-row').append(response);
-                    loading = false;
-                }
-            });
-        }
-    });
-});
+
 
 
 /*  IMAGE Lightbox */
-
-
-
