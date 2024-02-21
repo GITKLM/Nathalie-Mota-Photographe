@@ -93,10 +93,25 @@ jQuery(document).ready(function($) {
 document.addEventListener("DOMContentLoaded", function() {
     var openModalImages = document.querySelectorAll("#openModalImage");
     var moda = document.getElementById("myModa");
+    var modalContent = moda.querySelector(".modal-conten");
+    var modalImage = modalContent.querySelector(".img-lightBox img");
+    var modalTitle = modalContent.querySelector(".lightBox-categories p:first-child");
+    var modalCategory = modalContent.querySelector(".lightBox-categories p:last-child");
 
     // Itérer sur tous les éléments avec l'id "openModalImage"
     openModalImages.forEach(function(openModalImage) {
         openModalImage.addEventListener("click", function() {
+            // Récupérer les informations du thumbnail
+            var thumbnailContainer = openModalImage.closest(".thumbnail-container");
+            var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").src;
+            var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
+            var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
+
+            // Placer les informations dans la modal
+            modalImage.src = thumbnailImageSrc;
+            modalTitle.innerText = thumbnailTitle;
+            modalCategory.innerText = thumbnailCategory;
+
             moda.style.display = "block";
         });
     });
@@ -106,6 +121,10 @@ document.addEventListener("DOMContentLoaded", function() {
         moda.style.display = "none";
     });
 });
+
+
+
+
 
 
 /* OEIL */
@@ -144,3 +163,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /*  IMAGE Lightbox */
+
+

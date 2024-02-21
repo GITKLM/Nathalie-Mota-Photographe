@@ -497,10 +497,15 @@ height: 495px;
 
 
 }
- .img-lightBox img{
+ .img-lightBox{
   width: 564px;
   height: 495px;
   border: 1px solid black;
+  color: #FFFFFF;
+}
+.img-lightBox img{
+  width: 564px;
+  height: 495px;
 }
 .prev-ar, .next-ar{
   display: flex;

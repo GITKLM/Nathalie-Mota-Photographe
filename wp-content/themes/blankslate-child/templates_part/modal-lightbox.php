@@ -25,16 +25,15 @@ Template Name: Lightbox
       <img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
     </div>
 
-    <div class="test">
       <div class="img-lightBox">
-
+      <img src="" alt="Thumbnail">
       </div>
       <div class="lightBox-categories">
-          <p>Text1</p>
-          <p>Text2</p>
+          <p>Titre</p>
+          <p>Categorie</p>
         </div>
 
-    </div>
+   
 
     <div class="next-ar">
       <p>Suivante</p><img src="<?php echo get_stylesheet_directory_uri() . '/images/right_white.png'; ?>" alt="">
