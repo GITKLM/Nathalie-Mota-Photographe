@@ -87,7 +87,7 @@ get_header();
                     );
                     ?>
                     
-                        <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+                    <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
                     
                     <div class="thumbnail-title" style="display: none;">
@@ -128,10 +128,5 @@ get_header();
 <?php
 get_footer();
 ?>
-<?php
-// Autres codes PHP ici...
 
-// Définition de l'URL AJAX
-// $ajax_url = admin_url('admin-ajax.php');
-?>
 

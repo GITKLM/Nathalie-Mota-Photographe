@@ -117,7 +117,7 @@
         if ($related_posts->have_posts()) :
             while ($related_posts->have_posts()) : $related_posts->the_post();
         ?>
-                <div class="autre-img-<?php echo ($related_posts->current_post == 0) ? '1' : '2'; ?>">
+                <div class="autre-img autre-img-<?php echo ($related_posts->current_post == 0) ? '1' : '2'; ?>">
                     <div style="width: 564px; height: 495px; overflow: hidden;">
                         <?php
                         if (has_post_thumbnail()) {
@@ -126,7 +126,27 @@
                             echo 'Pas d\'image disponible';
                         }
                         ?>
+
+                            <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+
+                    <div class="thumbnail-title" style="display: none;">
+                        <p><?php the_title(); ?></p>
+                        <?php
+                        // Afficher les catégories
+                        if ($categories) {
+                            echo '<ul class="categories-list">';
+                            foreach ($categories as $category) {
+                                echo '<li>' . $category->name . '</li>';
+                            }
+                            echo '</ul>';
+                        }
+                        ?>
                     </div>
+                            <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+
+                    
+                    </div>
+                    
                 </div>
         <?php
             endwhile;
@@ -135,8 +155,10 @@
             echo 'Aucun autre article trouvé.';
         endif;
         ?>
+
     </div>
 </footer>
+
 
 
 
