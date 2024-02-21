@@ -27,6 +27,7 @@ Template Name: Lightbox
 
     <div class="test">
       <div class="img-lightBox">
+
       </div>
       <div class="lightBox-categories">
           <p>Text1</p>

@@ -51,14 +51,12 @@ get_header();
 </form>
 </div>
 
-
-
 <div class="thumbnails-container">
 <div class="row" id="image-row">
     <?php
     $args = array(
         'post_type' => 'photo', // Votre type de contenu personnalisé
-        'posts_per_page' => 8, // Afficher tous les éléments
+        'posts_per_page' => 8,
     );
 
     // Récupérer les éléments en fonction des paramètres de requête
