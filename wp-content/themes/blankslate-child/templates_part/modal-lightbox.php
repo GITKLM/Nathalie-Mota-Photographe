@@ -24,14 +24,15 @@ Template Name: Lightbox
     <div class="prev-ar">
       <img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
     </div>
-
-      <div class="img-lightBox">
-      <img src="" alt="Thumbnail">
-      </div>
-      <div class="lightBox-categories">
-          <p>Titre</p>
-          <p>Categorie</p>
-        </div>
+<div class="test">
+  <div class="img-lightBox">
+  <img src="" alt="Thumbnail">
+  </div>
+  <div class="lightBox-categories">
+      <p>Titre</p>
+      <p>Categorie</p>
+    </div>
+</div>
 
    
 

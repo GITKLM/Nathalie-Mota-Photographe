@@ -78,17 +78,6 @@ jQuery(document).ready(function($) {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
 /* LightBox */
 document.addEventListener("DOMContentLoaded", function() {
     var openModalImages = document.querySelectorAll("#openModalImage");
