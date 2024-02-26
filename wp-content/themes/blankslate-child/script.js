@@ -151,10 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
-/* CHARGEMENT SUPPLEMENTAIRE */
-
-
 // BURGER
 document.getElementById('menu-toggle')
 .addEventListener('click', function(){
@@ -182,4 +178,31 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   
-  
+/* CHARGEMENT SUPPLEMENTAIRE */
+
+jQuery(document).ready(function($) {
+    var offset = 8; // Offset initial
+
+    $('#load-more').on('click', function() {
+        $.ajax({
+            url: ajaxurl,
+            type: 'post',
+            data: {
+                action: 'load_more_thumbnails', // Action WordPress AJAX
+                offset: offset, // Offset pour la requête
+            },
+            success: function(response) {
+                if (response != 'end') {
+                    $('#image-row').append(response); // Ajouter les miniatures à la fin de la rangée
+                    offset += 8; // Mettre à jour l'offset
+                } else {
+                    $('#load-more').css('background-color', 'blue'); // Changer la couleur de fond du bouton
+                    $('#load-more').prop('disabled', true); // Désactiver le bouton
+                }
+            }
+        });
+    });
+});
+
+
+// button

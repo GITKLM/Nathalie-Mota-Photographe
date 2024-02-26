@@ -4,96 +4,60 @@ get_header();
 <div class="gallery-container">
 
 <div class="select-box-container">
-    <div class="select-box">
-      <div class="select-box__current" tabindex="1">
-        
-        <div class="select-box__value">
-          <input class="select-box__input" type="radio" id="0" value="1" name="category" checked>
-          <p class="select-box__input-text">CATÉGORIES</p>
-        </div>
-        
-        <?php
-        $categories = get_terms('categorie');
-        $index = 1;
-        foreach ($categories as $category) {
-            echo '
+    <div class="select-box-left">
+        <div class="select-box">
+          <div class="select-box__current" tabindex="1">
+            
             <div class="select-box__value">
-              <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
-              <p class="select-box__input-text">' . esc_html($category->name) . '</p>
-            </div>';
-            $index++;
-        }
-        ?>
-        <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
-      </div>
-      <ul class="select-box__list">
-        <li>
-          <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
-        </li>
-        <?php
-        $index = 1;
-        foreach ($categories as $category) {
-            echo '<li><label class="select-box__option" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
-            $index++;
-        }
-        ?>
-      </ul>
-    </div>
-    <div class="select-box">
-        <div class="select-box__current" tabindex="1">
-            <div class="select-box__value">
-                <input class="select-box__input" type="radio" id="format_all" value="" name="format" checked>
-                <p class="select-box__input-text">FORMATS</p>
+              <input class="select-box__input" type="radio" id="0" value="1" name="category" checked>
+              <p class="select-box__input-text">CATÉGORIES</p>
             </div>
             
             <?php
-            $formats = get_terms(array(
-                'taxonomy' => 'format',
-                'hide_empty' => false,
-            ));
+            $categories = get_terms('categorie');
             $index = 1;
-            foreach ($formats as $format) {
+            foreach ($categories as $category) {
                 echo '
                 <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="format_' . $index . '" value="' . esc_attr($format->slug) . '" name="format">
-                    <p class="select-box__input-text">' . esc_html($format->name) . '</p>
+                  <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
+                  <p class="select-box__input-text">' . esc_html($category->name) . '</p>
                 </div>';
                 $index++;
             }
             ?>
             <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
-        </div>
-        <ul class="select-box__list">
-            <li></li>
+          </div>
+          <ul class="select-box__list">
+            <li>
+              <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
+            </li>
             <?php
             $index = 1;
-            foreach ($formats as $format) {
-                echo '<li><label class="select-box__option" for="format_' . $index . '" aria-hidden>' . esc_html($format->name) . '</label></li>';
+            foreach ($categories as $category) {
+                echo '<li><label class="select-box__option" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
                 $index++;
             }
             ?>
-        </ul>
-    </div>
-    <div class="select-box">
+          </ul>
+        </div>
+        <div class="select-box">
             <div class="select-box__current" tabindex="1">
                 <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="type_reference_all" value="" name="type_reference" checked>
-                    <p class="select-box__input-text">TRIER PAR</p>
+                    <input class="select-box__input" type="radio" id="format_all" value="" name="format" checked>
+                    <p class="select-box__input-text">FORMATS</p>
                 </div>
                 
                 <?php
-                $terms = get_terms(array(
-                    'taxonomy' => 'annee',
-                    'orderby' => 'name',
-                    'order' => 'DESC',
+                $formats = get_terms(array(
+                    'taxonomy' => 'format',
                     'hide_empty' => false,
                 ));
                 $index = 1;
-                foreach ($terms as $term) {
+                foreach ($formats as $format) {
                     echo '
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="type_reference_' . $index . '" value="' . esc_attr($term->slug) . '" name="type_reference">
-                        <p class="select-box__input-text">' . esc_html($term->name) . '</p>
+                        <input class="select-box__input" type="radio" id="format_' . $index . '" value="' . esc_attr($format->slug) . '" name="format">
+                        <p class="select-box__input-text">' . esc_html($format->name) . '</p>
                     </div>';
                     $index++;
                 }
@@ -104,48 +68,22 @@ get_header();
                 <li></li>
                 <?php
                 $index = 1;
-                foreach ($terms as $term) {
-                    echo '<li><label class="select-box__option" for="type_reference_' . $index . '" aria-hidden>' . esc_html($term->name) . '</label></li>';
+                foreach ($formats as $format) {
+                    echo '<li><label class="select-box__option" for="format_' . $index . '" aria-hidden>' . esc_html($format->name) . '</label></li>';
                     $index++;
                 }
                 ?>
             </ul>
         </div>
     </div>
-    
-    
-    
-    
-        <!-- <div class="select-container">
-            <form id="filter-form">
-    
-                <select name="category" class="left-select">
-                <div class="select-categorie">
-                    <option value="">CATÉGORIES</option>
-    
-                    <?php
-                    $categories = get_terms('categorie');
-                    foreach ($categories as $category) {
-                        echo '<option value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</option>';
-                    }
-                    ?>
-    
-                </div>
-                </select>
-                <select name="format" class="left-select">
-                    <option value="">FORMATS</option>
-                    <?php
-                    $formats = get_terms(array(
-                        'taxonomy' => 'format',
-                        'hide_empty' => false,
-                    ));
-                    foreach ($formats as $format) {
-                        echo '<option value="' . esc_attr($format->slug) . '">' . esc_html($format->name) . '</option>';
-                    }
-                    ?>
-                </select>
-                <select name="type_reference" class="right-select">
-                    <option value="">TRIER PAR</option>
+    <div class="select-box-right">
+        <div class="select-box">
+                <div class="select-box__current" tabindex="1">
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="type_reference_all" value="" name="type_reference" checked>
+                        <p class="select-box__input-text">TRIER PAR</p>
+                    </div>
+                    
                     <?php
                     $terms = get_terms(array(
                         'taxonomy' => 'annee',
@@ -153,14 +91,33 @@ get_header();
                         'order' => 'DESC',
                         'hide_empty' => false,
                     ));
+                    $index = 1;
                     foreach ($terms as $term) {
-                        echo '<option value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
+                        echo '
+                        <div class="select-box__value">
+                            <input class="select-box__input" type="radio" id="type_reference_' . $index . '" value="' . esc_attr($term->slug) . '" name="type_reference">
+                            <p class="select-box__input-text">' . esc_html($term->name) . '</p>
+                        </div>';
+                        $index++;
                     }
                     ?>
-                </select>
-            </form>
-        </div> -->
+                    <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
+                </div>
+                <ul class="select-box__list">
+                    <li></li>
+                    <?php
+                    $index = 1;
+                    foreach ($terms as $term) {
+                        echo '<li><label class="select-box__option" for="type_reference_' . $index . '" aria-hidden>' . esc_html($term->name) . '</label></li>';
+                        $index++;
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div>
     
+
         <div class="thumbnails-container">
             <div class="row" id="image-row">
                 <?php
@@ -243,10 +200,6 @@ get_header();
                 <button id="load-more">Charger plus</button>
             </div>
         </div>
-    
-</div>
-
-
 <?php
 get_footer();
 ?>

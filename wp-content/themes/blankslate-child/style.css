@@ -533,6 +533,7 @@ height: 495px;
   left: 0;
   width: 100%; 
   height: 100%;
+  z-index: 99;
 }
 /* Style du contenu de la modal */
 .modal-conten {
@@ -609,40 +610,42 @@ height: 495px;
 /* SELECT */
 
 .select-box-container{
+  max-width: 1008px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 40px;
 }
-.select-box {
-  position: relative;
-  width: 60px;
-  margin: 0 auto;
-  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
-  font-size: 18px;
-  color: #313144;
-  z-index: 99;
-}
-.select-box__current{
-  width: 260px;
-  border: 1px solid black;
-}
 
-@media (min-width: 768px) {
   .select-box {
-    width: 70%;
+    /* font-family: 'Poppins'; */
+    width: 220px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #313144;
+    z-index: 2;
+    border: 1px solid #B8BBC2;
+    border-radius: 8px;
   }
-}
-
-@media (min-width: 992px) {
-  .select-box {
-    width: 50%;
+  .select-box:hover {
+    border: none; /* Suppression de la bordure de .select-box au survol */
   }
-}
-
-@media (min-width: 1200px) {
-  .select-box {
-    width: 30%;
+  
+  .select-box__current:hover .select-box__input-text {
+    border: 1px solid #215AFF; /* Ajout de la nouvelle bordure au survol */
+    border-radius: 8px; /* Ajout du rayon de la bordure */
   }
+  
+  .select-box__current:focus .select-box__input-text {
+    border: 1px solid #215AFF; 
+  }
+  
+  
+.select-box-left{
+display: flex;
+justify-content: space-between;
+gap: 50px;
 }
 
 .select-box__current {
@@ -652,16 +655,24 @@ height: 495px;
   outline: none;
 }
 
-.select-box__current:focus {
-  & + .select-box__list {
-    opacity: 1;
-    animation-name: none;
-  }
-
-  .select-box__icon {
-    transform: translateY(-50%) rotate(180deg);
-  }
+.select-box__current:focus + .select-box__list {
+  opacity: 1;
+  animation-name: none;
 }
+
+.select-box__current:focus .select-box__input-text {
+  border: 1px solid #215AFF;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+
+.select-box__current:focus .select-box__icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 
 .select-box__icon {
   position: absolute;
@@ -683,13 +694,14 @@ height: 495px;
 
 .select-box__input:checked + .select-box__input-text {
   display: block;
+
 }
 
 .select-box__input-text {
   display: none;
   width: 100%;
   margin: 0;
-  padding: 15px;
+  padding: 10px;
   background-color: #fff;
 }
 
@@ -788,5 +800,10 @@ margin-top: 30px;
     display: block; /* Changement ici */
    padding: 10px;
   }
+
+}
+
+/* PASSAGE A 1 image */
+@media (max-width: 1327px) {
 
 }
