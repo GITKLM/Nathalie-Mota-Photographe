@@ -306,7 +306,7 @@ padding: 20px 110px;
 
 /* Stylisation des selects */
 
-.select-container {
+/* .select-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
@@ -326,7 +326,9 @@ padding: 20px 110px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
+} */
+
+
 
 /* Stylisation du bouton "Charger plus" */
 .load-more-container{
@@ -606,16 +608,23 @@ height: 495px;
 
 /* SELECT */
 
-
+.select-box-container{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
 .select-box {
   position: relative;
-  display: block;
-  width: 100%;
+  width: 60px;
   margin: 0 auto;
   font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
   font-size: 18px;
   color: #313144;
   z-index: 99;
+}
+.select-box__current{
+  width: 260px;
+  border: 1px solid black;
 }
 
 @media (min-width: 768px) {

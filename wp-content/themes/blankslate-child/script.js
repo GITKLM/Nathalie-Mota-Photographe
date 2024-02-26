@@ -52,10 +52,10 @@ jQuery(document).ready(function($) {
 /* FILTRE */
 jQuery(document).ready(function($) {
     // Fonction pour gérer les changements de sélection
-    $('.select-container select').change(function() {
-        var category = $('select[name="category"]').val();
-        var format = $('select[name="format"]').val();
-        var type_reference = $('select[name="type_reference"]').val();
+    $('.select-box__input').change(function() {
+        var category = $('input[name="category"]:checked').val();
+        var format = $('input[name="format"]:checked').val();
+        var type_reference = $('input[name="type_reference"]:checked').val();
 
         // Envoyer une requête Ajax à WordPress
         $.ajax({
@@ -77,6 +77,8 @@ jQuery(document).ready(function($) {
         });
     });
 });
+
+
 
 /* LightBox */
 document.addEventListener("DOMContentLoaded", function() {
