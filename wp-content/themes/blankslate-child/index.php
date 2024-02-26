@@ -2,17 +2,59 @@
 get_header();
 ?>
 <div class="gallery-container">
+
+
+<div class="select-box">
+  <div class="select-box__current" tabindex="1">
+    <div class="select-box__value">
+      <input class="select-box__input" type="radio" id="0" value="1" name="category" checked>
+      <p class="select-box__input-text">CATÉGORIES</p>
+    </div>
+    <?php
+    $categories = get_terms('categorie');
+    $index = 1;
+    foreach ($categories as $category) {
+        echo '
+        <div class="select-box__value">
+          <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
+          <p class="select-box__input-text">' . esc_html($category->name) . '</p>
+        </div>';
+        $index++;
+    }
+    ?>
+    <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
+  </div>
+  <ul class="select-box__list">
+    <li>
+      <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
+    </li>
+    <?php
+    $index = 1;
+    foreach ($categories as $category) {
+        echo '<li><label class="select-box__option" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
+        $index++;
+    }
+    ?>
+  </ul>
+</div>
+
+
+
     <div class="select-container">
         <form id="filter-form">
+
             <select name="category" class="left-select">
+            <div class="select-categorie">
                 <option value="">CATÉGORIES</option>
+
                 <?php
-                // Récupérer toutes les catégories de votre taxonomie "categorie"
                 $categories = get_terms('categorie');
                 foreach ($categories as $category) {
                     echo '<option value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</option>';
                 }
                 ?>
+
+            </div>
             </select>
             <select name="format" class="left-select">
                 <option value="">FORMATS</option>

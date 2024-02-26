@@ -3,7 +3,6 @@
 
 <footer id="footer" role="contentinfo">
 </footer>
-<button id="openModalBtn">Ouvrir la modal</button>
 
 <div class="footer-content">
 <ul>
@@ -16,7 +15,7 @@
    <!-- Inclure la modale de contact -->
 <?php get_template_part( 'templates_part/modal-lightbox'); ?> 
 
-<button id="openModalBtn">Ouvrir la modal</button>
+ <!-- <button id="openModalBtn">Ouvrir la modal</button> -->
 <?php include 'modal-contact.php'; ?>
 
 

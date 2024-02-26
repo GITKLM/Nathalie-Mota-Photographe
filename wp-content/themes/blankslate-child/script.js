@@ -111,22 +111,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-
-
-
 /* OEIL */
 document.addEventListener("DOMContentLoaded", function() {
     const centeredImage = document.querySelectorAll(".centered-image");
     const thumbnailTitle = document.querySelectorAll(".thumbnail-title");
 
     centeredImage.forEach(function(image, index) {
+        let isOpen = false; // Variable pour suivre l'état d'ouverture du titre
+
         image.addEventListener("click", function() {
-            if (thumbnailTitle[index].style.display === "block") {
-                thumbnailTitle[index].style.display = "none";
-            } else {
-                thumbnailTitle[index].style.display = "block";
+            if (isOpen) { // Si le titre est déjà ouvert
+                thumbnailTitle[index].style.display = "none"; // Le fermer
+                isOpen = false; // Mettre à jour l'état d'ouverture
+            } else { // Sinon, le titre est fermé
+                thumbnailTitle.forEach(function(title) { // Fermer tous les autres titres ouverts
+                    title.style.display = "none";
+                });
+                thumbnailTitle[index].style.display = "block"; // Ouvrir le titre cliqué
                 // Appliquer les styles CSS à thumbnail-title lors de son affichage
                 thumbnailTitle[index].style.position = "absolute";
                 thumbnailTitle[index].style.bottom = "0";
@@ -141,16 +142,42 @@ document.addEventListener("DOMContentLoaded", function() {
                 thumbnailTitle[index].style.display = "flex";
                 thumbnailTitle[index].style.justifyContent = "space-between";
                 thumbnailTitle[index].style.alignItems = "flex-end";
+                isOpen = true; // Mettre à jour l'état d'ouverture
             }
         });
     });
 });
 
 
+
 /* CHARGEMENT SUPPLEMENTAIRE */
 
 
+// BURGER
+document.getElementById('menu-toggle')
+.addEventListener('click', function(){
+  document.body.classList.toggle('nav-open');
+});
 
-/*  IMAGE Lightbox */
+// MENU DEROULANT
 
-
+document.addEventListener("DOMContentLoaded", function() {
+    var menuToggle = document.getElementById('menu-toggle');
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    var body = document.body;
+  
+    menuToggle.addEventListener('click', function() {
+      dropdownMenu.classList.toggle('active');
+  
+      if (dropdownMenu.classList.contains('active')) {
+        // Désactiver le défilement du corps lorsque le menu est ouvert
+        body.style.overflow = 'hidden';
+      } else {
+        // Réactiver le défilement du corps lorsque le menu est fermé
+        body.style.overflow = '';
+      }
+    });
+  });
+  
+  
+  

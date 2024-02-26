@@ -8,6 +8,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="wrapper" class="hfeed">
+
 <header id="header" role="banner">
 <div id="branding">
 <div id="site-title" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
@@ -19,19 +20,25 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </div>
 <div id="site-description"<?php if ( !is_single() ) { echo ' itemprop="description"'; } ?>><?php bloginfo( 'description' ); ?></div>
 </div>
-
-
 <div class="container">
     <div class="logo">
     <a href="<?php echo esc_url(home_url('/')); ?>">
     <img src="<?php echo get_stylesheet_directory_uri() . '/images/Nathalie Mota.png'; ?>" alt="Logo" class="image-with-padding">
-</a>
+    </a>
     </div>
     <nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>' ) ); ?>
-</nav>
+<div class="burger-container">
+  <a id="menu-toggle" class="menu-toggle">
+    <span class="menu-toggle-bar menu-toggle-bar--top"></span>
+    <span class="menu-toggle-bar menu-toggle-bar--middle"></span>
+    <span class="menu-toggle-bar menu-toggle-bar--bottom"></span>
+  </a>
 
 </div>
+</nav>
+</div>
+
 
 <?php if (!is_single()) :/*supprimer la banner quand article*/?>
     
@@ -41,5 +48,9 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </div>
 
 </header>
+<div class="dropdown-menu">
+<!-- <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span class="menu-burger-nav" itemprop="name">', 'link_after' => '</span>' ) ); ?> -->
+
+  </div>
 <div id="container">
 <main id="content" role="main">
