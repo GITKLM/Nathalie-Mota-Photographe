@@ -189,15 +189,6 @@ get_header();
                 </div>
                 <?php
             endwhile;
-            // Si vous souhaitez ajouter une image statique pour remplacer celle supprimée
-            ?>
-            <div class="column">
-                <div class="thumbnail-container">
-                    <img src="http://localhost:8888/Nathalie-Mota-Photographe/wp-content/uploads/2024/02/nathalie-11.jpg" alt="Votre image">
-                    <!-- Autres balises ou contenu si nécessaire -->
-                </div>
-            </div>
-            <?php
             wp_reset_postdata(); // Réinitialiser les données de publication
         else :
             echo 'Aucun élément trouvé.';
@@ -208,7 +199,6 @@ get_header();
         <button id="load-more">Charger plus</button>
     </div>
 </div>
-
 
 
 <?php
