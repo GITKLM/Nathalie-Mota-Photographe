@@ -163,6 +163,8 @@ get_header();
     
                         // Afficher le thumbnail de chaque article
                         ?>
+
+                        
                         <div class="column">
                             <div class="thumbnail-container">
                                 <?php
@@ -196,6 +198,7 @@ get_header();
                     echo 'Aucun élément trouvé.';
                 endif;
                 ?>
+
             </div>
             <div class="load-more-container">
                 <button id="load-more">Charger plus</button>
