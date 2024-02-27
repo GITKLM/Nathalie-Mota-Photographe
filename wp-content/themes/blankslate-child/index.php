@@ -118,92 +118,99 @@ get_header();
     </div>
     
 
-        <div class="thumbnails-container">
+    <div class="thumbnails-container">
+    <div class="row" id="image-row">
+        <?php
+        $args = array(
+            'post_type'      => 'photo',
+            'posts_per_page' => 8,
+        );
 
-            <div class="row" id="image-row">
-                <?php
-                $args = array(
-                    'post_type' => 'photo',
-                    'posts_per_page' => 8,
-                );
-    
-                // Ajouter la logique pour filtrer par taxonomie
-                if (isset($_GET['category']) && $_GET['category'] != '') {
-                    $args['tax_query'][] = array(
-                        'taxonomy' => 'categorie',
-                        'field' => 'slug',
-                        'terms' => $_GET['category'],
-                    );
-                }
-    
-                if (isset($_GET['format']) && $_GET['format'] != '') {
-                    $args['tax_query'][] = array(
-                        'taxonomy' => 'format',
-                        'field' => 'slug',
-                        'terms' => $_GET['format'],
-                    );
-                }
-    
-                if (isset($_GET['type_reference']) && $_GET['type_reference'] != '') {
-                    $args['tax_query'][] = array(
-                        'taxonomy' => 'annee',
-                        'field' => 'slug',
-                        'terms' => $_GET['type_reference'],
-                    );
-                }
-    
-                // Récupérer les éléments en fonction des paramètres de requête
-                $photos_query = new WP_Query($args);
-    
-                // Afficher les éléments récupérés
-                if ($photos_query->have_posts()) :
-                    while ($photos_query->have_posts()) : $photos_query->the_post();
-                        // Récupérer les catégories associées à la photo
-                        $categories = get_the_terms(get_the_ID(), 'categorie');
-    
-                        // Afficher le thumbnail de chaque article
-                        ?>
+        // Ajouter la logique pour filtrer par taxonomie
+        if ( isset( $_GET['category'] ) && $_GET['category'] != '' ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'categorie',
+                'field'    => 'slug',
+                'terms'    => $_GET['category'],
+            );
+        }
 
-                        
-                        <div class="column">
-                            <div class="thumbnail-container">
-                                <?php
-                                // Afficher le thumbnail
-                                the_post_thumbnail(
-                                    array(564, 495),
-                                    array('class' => 'custom-thumbnail')
-                                );
-                                ?>
-                                <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
-                                <div class="thumbnail-title" style="display: none;">
-                                    <p><?php the_title(); ?></p>
-                                    <?php
-                                    // Afficher les catégories
-                                    if ($categories) {
-                                        echo '<ul class="categories-list">';
-                                        foreach ($categories as $category) {
-                                            echo '<li>' . $category->name . '</li>';
-                                        }
-                                        echo '</ul>';
-                                    }
-                                    ?>
-                                </div>
-                                <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
-                            </div>
-                        </div>
-                        <?php
-                    endwhile;
-                    wp_reset_postdata(); // Réinitialiser les données de publication
-                else :
-                    echo 'Aucun élément trouvé.';
-                endif;
+        if ( isset( $_GET['format'] ) && $_GET['format'] != '' ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'format',
+                'field'    => 'slug',
+                'terms'    => $_GET['format'],
+            );
+        }
+
+        if ( isset( $_GET['type_reference'] ) && $_GET['type_reference'] != '' ) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'annee',
+                'field'    => 'slug',
+                'terms'    => $_GET['type_reference'],
+            );
+        }
+
+        // Récupérer les éléments en fonction des paramètres de requête
+        $photos_query = new WP_Query( $args );
+
+        // Afficher les éléments récupérés
+        if ( $photos_query->have_posts() ) :
+            while ( $photos_query->have_posts() ) : $photos_query->the_post();
+                // Récupérer les catégories associées à la photo
+                $categories = get_the_terms( get_the_ID(), 'categorie' );
                 ?>
 
+                <div class="column">
+                    <div class="thumbnail-container">
+                        <?php
+                        // Afficher le thumbnail
+                        the_post_thumbnail(
+                            array( 564, 495 ),
+                            array( 'class' => 'custom-thumbnail' )
+                        );
+                        ?>
+                        <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+                        <div class="thumbnail-title" style="display: none;">
+                            <p><?php the_title(); ?></p>
+                            <?php
+                            // Afficher les catégories
+                            if ( $categories ) {
+                                echo '<ul class="categories-list">';
+                                foreach ( $categories as $category ) {
+                                    echo '<li>' . $category->name . '</li>';
+                                }
+                                echo '</ul>';
+                            }
+                            ?>
+                        </div>
+                        <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                    </div>
+                </div>
+                <?php
+            endwhile;
+            // Si vous souhaitez ajouter une image statique pour remplacer celle supprimée
+            ?>
+            <div class="column">
+                <div class="thumbnail-container">
+                    <img src="http://localhost:8888/Nathalie-Mota-Photographe/wp-content/uploads/2024/02/nathalie-11.jpg" alt="Votre image">
+                    <!-- Autres balises ou contenu si nécessaire -->
+                </div>
             </div>
-            <div class="load-more-container">
-                <button id="load-more">Charger plus</button>
-            </div>
-        </div>
+            <?php
+            wp_reset_postdata(); // Réinitialiser les données de publication
+        else :
+            echo 'Aucun élément trouvé.';
+        endif;
+        ?>
+    </div>
+    <div class="load-more-container">
+        <button id="load-more">Charger plus</button>
+    </div>
+</div>
+
+
+
 <?php
 get_footer();
 ?>
