@@ -635,6 +635,7 @@ height: 495px;
   .select-box__current:hover .select-box__input-text {
     border: 1px solid #215AFF; /* Ajout de la nouvelle bordure au survol */
     border-radius: 8px; /* Ajout du rayon de la bordure */
+    margin: 2px;
   }
   
   .select-box__current:focus .select-box__input-text {
@@ -700,7 +701,7 @@ gap: 50px;
 .select-box__input-text {
   display: none;
   width: 100%;
-  margin: 0;
+  margin: 2px;
   padding: 10px;
   background-color: #fff;
 }

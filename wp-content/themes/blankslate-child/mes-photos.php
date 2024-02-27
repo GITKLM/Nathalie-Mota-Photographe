@@ -158,6 +158,21 @@
 
     </div>
 </footer>
+<?php
+// Récupérer les références de l'article
+$references = array();
+$terms_references = get_the_terms(get_the_ID(), 'reference');
+if ($terms_references && !is_wp_error($terms_references)) {
+    foreach ($terms_references as $term_reference) {
+        $references[] = $term_reference->name;
+    }
+}
+?>
+
+<script>
+// Définir une variable JavaScript pour stocker les références
+var reference_data = <?php echo json_encode($references); ?>;
+</script>
 
 
 

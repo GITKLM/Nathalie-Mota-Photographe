@@ -12,18 +12,18 @@ Template Name: Lightbox
 </head>
 <body>
 
-<!-- La modal -->
+
 <div id="myModa" class="moda">
-  <!-- Contenu de la modal -->
+
   
   <div class="modal-conten">
     
-    <!-- Bouton pour fermer la modal -->
     <span class="close">&times;</span>
   <div class="lightBox-container">
-    <div class="prev-ar">
-      <img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
+  <div class="prev-ar" id="prevArrow">
+<img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
     </div>
+
 <div class="test">
   <div class="img-lightBox">
   <img src="" alt="Thumbnail">
@@ -36,8 +36,8 @@ Template Name: Lightbox
 
    
 
-    <div class="next-ar">
-      <p>Suivante</p><img src="<?php echo get_stylesheet_directory_uri() . '/images/right_white.png'; ?>" alt="">
+<div class="next-ar" id="nextArrow">
+<p>Suivante</p><img src="<?php echo get_stylesheet_directory_uri() . '/images/right_white.png'; ?>" alt="">
     </div>
   </div>
      

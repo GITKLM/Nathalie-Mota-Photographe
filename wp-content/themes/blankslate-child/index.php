@@ -119,6 +119,7 @@ get_header();
     
 
         <div class="thumbnails-container">
+
             <div class="row" id="image-row">
                 <?php
                 $args = array(

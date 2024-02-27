@@ -3,16 +3,16 @@
 Template Name: Formulaire
 */
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire</title>
+    <!-- Lier votre fichier JavaScript externe -->
+    <script src="chemin/vers/modal.js"></script>
 </head>
 <body>
-
 
 <!-- La modal -->
 <div id="myModal" class="modal">
@@ -28,6 +28,7 @@ Template Name: Formulaire
      
   </div>
 </div>
+
 
 </body>
 </html>

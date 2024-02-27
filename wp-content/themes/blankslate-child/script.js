@@ -25,27 +25,31 @@ jQuery(document).ready(function($) {
 
 /* REF PHOTO */
 jQuery(document).ready(function($) {
-    // Ajoute un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
+    // Ajoutez un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
     $('.modalBtn').on('click', function(event) {
         event.preventDefault(); // Empêche le comportement par défaut du lien
         
         // Récupérer les références de l'article
         var referencePhoto = reference_data.join(', ');
-        
+
         // Remplir automatiquement le champ "RÉF. PHOTO" du formulaire Contact Form 7 avec les références récupérées
         $('#photo-reference').val(referencePhoto);
         
         // Afficher la modale
         $('#myModal').css('display', 'block');
     });
-  
-    // Ajoute un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
+
+    // Ajoutez un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
     $(window).on('click', function(event) {
         if ($(event.target).is('#myModal')) {
             $('#myModal').css('display', 'none');
         }
     });
 });
+
+
+
+
 
 
 
@@ -88,30 +92,51 @@ document.addEventListener("DOMContentLoaded", function() {
     var modalImage = modalContent.querySelector(".img-lightBox img");
     var modalTitle = modalContent.querySelector(".lightBox-categories p:first-child");
     var modalCategory = modalContent.querySelector(".lightBox-categories p:last-child");
+    var currentIndex = 0;
 
-    // Itérer sur tous les éléments avec l'id "openModalImage"
-    openModalImages.forEach(function(openModalImage) {
+    function updateModalContent(index) {
+        var thumbnailContainer = openModalImages[index].closest(".thumbnail-container");
+        var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").src;
+        var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
+        var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
+
+        modalImage.src = thumbnailImageSrc;
+        modalTitle.innerText = thumbnailTitle;
+        modalCategory.innerText = thumbnailCategory;
+        currentIndex = index;
+    }
+
+    function showPreviousImage() {
+        if (currentIndex > 0) {
+            updateModalContent(currentIndex - 1);
+        }
+    }
+
+    function showNextImage() {
+        if (currentIndex < openModalImages.length - 1) {
+            updateModalContent(currentIndex + 1);
+        }
+    }
+
+    openModalImages.forEach(function(openModalImage, index) {
         openModalImage.addEventListener("click", function() {
-            // Récupérer les informations du thumbnail
-            var thumbnailContainer = openModalImage.closest(".thumbnail-container");
-            var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").src;
-            var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
-            var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
-
-            // Placer les informations dans la modal
-            modalImage.src = thumbnailImageSrc;
-            modalTitle.innerText = thumbnailTitle;
-            modalCategory.innerText = thumbnailCategory;
-
+            updateModalContent(index);
             moda.style.display = "block";
         });
     });
+
+    var prevButton = moda.querySelector(".prev-ar");
+    var nextButton = moda.querySelector(".next-ar");
+
+    prevButton.addEventListener("click", showPreviousImage);
+    nextButton.addEventListener("click", showNextImage);
 
     var closeButton = moda.querySelector(".close");
     closeButton.addEventListener("click", function() {
         moda.style.display = "none";
     });
 });
+
 
 /* OEIL */
 document.addEventListener("DOMContentLoaded", function() {
@@ -205,4 +230,7 @@ jQuery(document).ready(function($) {
 });
 
 
-// button
+// nav lightbox
+
+
+
