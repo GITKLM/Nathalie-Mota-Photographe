@@ -230,7 +230,16 @@ jQuery(document).ready(function($) {
 });
 
 
-// nav lightbox
+// nav article
+jQuery(document).ready(function($) {
+    $('.prev-arrow').hover(function() {
+        var prevImgSrc = $('.prev-link').find('img').attr('src');
+        $('#img-min').html('<img src="' + prevImgSrc + '" alt="Image précédente">');
+    });
 
-
+    $('.next-arrow').hover(function() {
+        var nextImgSrc = $('.next-link').find('img').attr('src');
+        $('#img-min').html('<img src="' + nextImgSrc + '" alt="Image suivante">');
+    });
+});
 

@@ -487,16 +487,28 @@ justify-content: center;
 }
 #img-nav-container{
   margin-bottom: 7px;
-  display: flex; /* Utilisation de flexbox sur le parent */
+  display: flex;
   justify-content: flex-end;
 }
 
 #img-min{
-
   width: 79px;
   height: 69px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
+#img-min img {
+  width: 79px;
+  height: 69px;
+}
+.zebi img{
+  width: 0px;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 #arrow-container {
   display: flex;
   justify-content: space-between;

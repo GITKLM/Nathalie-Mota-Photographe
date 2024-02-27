@@ -194,6 +194,9 @@ function load_more_thumbnails() {
 
 
 
+// nav article
+
+
 
 
 
