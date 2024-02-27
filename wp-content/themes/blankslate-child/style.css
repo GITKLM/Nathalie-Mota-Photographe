@@ -514,21 +514,10 @@ justify-content: center;
   justify-content: space-between;
 }
 
-/* #prev-arrow,
-#next-arrow {
+.prev-arrow,
+.next-arrow {
   flex: 1;
   text-align: center;
-} */
-
-.next-ar p,
-.prev-ar p {
- cursor: pointer;
-}
-
-.next-ar p:hover,
-.prev-ar p:hover {
-  color: #000;
-  font-weight: 700;
 }
 
 .autre-img-container{
