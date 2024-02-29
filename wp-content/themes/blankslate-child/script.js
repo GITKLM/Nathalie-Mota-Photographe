@@ -124,7 +124,6 @@ jQuery(document).ready(function($) {
 
 /* LightBox */
 document.addEventListener("DOMContentLoaded", function() {
-    var openModalImages = document.querySelectorAll(".openModalImage");
     var moda = document.getElementById("myModa");
     var modalContent = moda.querySelector(".modal-conten");
     var modalImage = modalContent.querySelector(".img-lightBox img");
@@ -133,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var currentIndex = 0;
 
     function updateModalContent(index) {
+        var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
         var thumbnailContainer = openModalImages[index].closest(".thumbnail-container");
         var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
         var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
@@ -153,16 +153,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showNextImage() {
+        var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
         if (currentIndex < openModalImages.length - 1) {
             updateModalContent(currentIndex + 1);
         }
     }
 
-    openModalImages.forEach(function(openModalImage, index) {
-        openModalImage.addEventListener("click", function() {
+    // Utilisation d'un événement délégué pour les éléments dynamiques
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('openModalImage')) {
+            var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
+            var index = Array.from(openModalImages).indexOf(event.target);
             updateModalContent(index);
             moda.style.display = "block";
-        });
+        }
     });
 
     var prevButton = moda.querySelector(".prev-ar");
@@ -176,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
         moda.style.display = "none";
     });
 });
+
 
 
 /* OEIL ouvrir */
