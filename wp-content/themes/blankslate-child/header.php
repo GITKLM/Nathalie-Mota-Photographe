@@ -40,17 +40,38 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </div>
 
 
-<?php if (!is_single()) :/*supprimer la banner quand article*/?>
-    
+
+<div class="banner-container">
+  <?php
+  if (!is_single()) :
+      // Chemin vers le répertoire contenant les images aléatoires
+      $random_image_dir = get_stylesheet_directory() . '/images/random/';
+      
+      // Liste des fichiers dans le répertoire
+      $random_images = glob($random_image_dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+      
+      // Sélection aléatoire d'une image parmi la liste
+      $random_image = $random_images[array_rand($random_images)];
+  
+      // Affichage de la bannière avec l'image aléatoire
+  ?>
+<?php if (!is_single()) : ?>
 <div class="banner">
-<img src="<?php echo get_stylesheet_directory_uri() . '/images/Titre header.png'; ?>" alt="Logo" class="image-with-padding">
-<?php endif; ?>
+    <img src="<?php echo get_stylesheet_directory_uri() . '/images/random/' . basename($random_image); ?>" alt="Background Image" class="background-image">
+    <div class="logo-container">
+        <img src="<?php echo get_stylesheet_directory_uri() . '/images/Titre header.png'; ?>" alt="Logo" class="my-logo">
+    </div>
 </div>
+<?php endif; ?>
+
+  <?php endif; ?>
+
+</div>
+
 
 </header>
 <div class="dropdown-menu">
-<!-- <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span class="menu-burger-nav" itemprop="name">', 'link_after' => '</span>' ) ); ?> -->
-
-  </div>
+    <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span class="menu-burger-nav" itemprop="name">', 'link_after' => '</span>' ) ); ?>
+</div>
 <div id="container">
 <main id="content" role="main">

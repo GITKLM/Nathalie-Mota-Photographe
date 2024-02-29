@@ -47,8 +47,47 @@ jQuery(document).ready(function($) {
     });
 });
 
+// BURGER
+document.getElementById('menu-toggle')
+.addEventListener('click', function(){
+  document.body.classList.toggle('nav-open');
+});
+
+// MENU DEROULANT
+
+document.addEventListener("DOMContentLoaded", function() {
+    var menuToggle = document.getElementById('menu-toggle');
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    var body = document.body;
+  
+    menuToggle.addEventListener('click', function() {
+      dropdownMenu.classList.toggle('active');
+  
+      if (dropdownMenu.classList.contains('active')) {
+        // Désactiver le défilement du corps lorsque le menu est ouvert
+        body.style.overflow = 'hidden';
+      } else {
+        // Réactiver le défilement du corps lorsque le menu est fermé
+        body.style.overflow = '';
+      }
+    });
+  });
+  
 
 
+
+// nav article
+jQuery(document).ready(function($) {
+    $('.prev-arrow').hover(function() {
+        var prevImgSrc = $('.prev-link').find('img').attr('src');
+        $('#img-min').html('<img src="' + prevImgSrc + '" alt="Image précédente">');
+    });
+
+    $('.next-arrow').hover(function() {
+        var nextImgSrc = $('.next-link').find('img').attr('src');
+        $('#img-min').html('<img src="' + nextImgSrc + '" alt="Image suivante">');
+    });
+});
 
 
 
@@ -83,10 +122,9 @@ jQuery(document).ready(function($) {
 });
 
 
-
 /* LightBox */
 document.addEventListener("DOMContentLoaded", function() {
-    var openModalImages = document.querySelectorAll("#openModalImage");
+    var openModalImages = document.querySelectorAll(".openModalImage");
     var moda = document.getElementById("myModa");
     var modalContent = moda.querySelector(".modal-conten");
     var modalImage = modalContent.querySelector(".img-lightBox img");
@@ -96,9 +134,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateModalContent(index) {
         var thumbnailContainer = openModalImages[index].closest(".thumbnail-container");
-        var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").src;
         var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
         var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
+
+        // Récupérer l'URL de l'image de l'article photo
+        var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").getAttribute("src");
 
         modalImage.src = thumbnailImageSrc;
         modalTitle.innerText = thumbnailTitle;
@@ -138,70 +178,28 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-/* OEIL */
-document.addEventListener("DOMContentLoaded", function() {
-    const centeredImage = document.querySelectorAll(".centered-image");
-    const thumbnailTitle = document.querySelectorAll(".thumbnail-title");
+/* OEIL ouvrir */
 
-    centeredImage.forEach(function(image, index) {
-        let isOpen = false; // Variable pour suivre l'état d'ouverture du titre
+    document.addEventListener("DOMContentLoaded", function() {
+        // Sélectionnez tous les éléments avec la classe "centered-image"
+        var centeredImages = document.querySelectorAll('.centered-image');
 
-        image.addEventListener("click", function() {
-            if (isOpen) { // Si le titre est déjà ouvert
-                thumbnailTitle[index].style.display = "none"; // Le fermer
-                isOpen = false; // Mettre à jour l'état d'ouverture
-            } else { // Sinon, le titre est fermé
-                thumbnailTitle.forEach(function(title) { // Fermer tous les autres titres ouverts
-                    title.style.display = "none";
-                });
-                thumbnailTitle[index].style.display = "block"; // Ouvrir le titre cliqué
-                // Appliquer les styles CSS à thumbnail-title lors de son affichage
-                thumbnailTitle[index].style.position = "absolute";
-                thumbnailTitle[index].style.bottom = "0";
-                thumbnailTitle[index].style.left = "0";
-                thumbnailTitle[index].style.width = "92%";
-                thumbnailTitle[index].style.height = "100%";
-                thumbnailTitle[index].style.color = "#fff";
-                thumbnailTitle[index].style.padding = "10px";
-                thumbnailTitle[index].style.margin = "0";
-                thumbnailTitle[index].style.opacity = "1";
-                thumbnailTitle[index].style.transition = "opacity 0.3s ease";
-                thumbnailTitle[index].style.display = "flex";
-                thumbnailTitle[index].style.justifyContent = "space-between";
-                thumbnailTitle[index].style.alignItems = "flex-end";
-                isOpen = true; // Mettre à jour l'état d'ouverture
-            }
+        // Parcourez tous les éléments sélectionnés
+        centeredImages.forEach(function(image) {
+            // Ajoutez un écouteur d'événements de clic à chaque élément
+            image.addEventListener('click', function() {
+                // Obtenez l'URL de l'article associé en remontant dans la structure DOM
+                var articleURL = this.closest('.thumbnail-container, .autre-img').querySelector('.top-image').getAttribute('href');
+                
+                // Redirigez l'utilisateur vers l'URL de l'article
+                window.location.href = articleURL;
+            });
         });
     });
-});
+    
+/* TEST TRI  */
 
 
-// BURGER
-document.getElementById('menu-toggle')
-.addEventListener('click', function(){
-  document.body.classList.toggle('nav-open');
-});
-
-// MENU DEROULANT
-
-document.addEventListener("DOMContentLoaded", function() {
-    var menuToggle = document.getElementById('menu-toggle');
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    var body = document.body;
-  
-    menuToggle.addEventListener('click', function() {
-      dropdownMenu.classList.toggle('active');
-  
-      if (dropdownMenu.classList.contains('active')) {
-        // Désactiver le défilement du corps lorsque le menu est ouvert
-        body.style.overflow = 'hidden';
-      } else {
-        // Réactiver le défilement du corps lorsque le menu est fermé
-        body.style.overflow = '';
-      }
-    });
-  });
-  
   
 /* CHARGEMENT SUPPLEMENTAIRE */
 
@@ -230,16 +228,5 @@ jQuery(document).ready(function($) {
 });
 
 
-// nav article
-jQuery(document).ready(function($) {
-    $('.prev-arrow').hover(function() {
-        var prevImgSrc = $('.prev-link').find('img').attr('src');
-        $('#img-min').html('<img src="' + prevImgSrc + '" alt="Image précédente">');
-    });
 
-    $('.next-arrow').hover(function() {
-        var nextImgSrc = $('.next-link').find('img').attr('src');
-        $('#img-min').html('<img src="' + nextImgSrc + '" alt="Image suivante">');
-    });
-});
 

@@ -1,6 +1,7 @@
 <?php
 // Affichage personnalisé pour les articles individuels
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('flex-container'); ?>>
     <header class="entry-header flex-item">
         <h2 class="entry-title"><?php the_title(); ?></h2>
@@ -56,7 +57,7 @@
             <img src="<?php echo get_stylesheet_directory_uri() . '/images/Line 3.png'; ?>" alt="petite ligne">
             <div class="contact-container">
                 <p>Cette photo vous intéresse ?</p>
-                <button id="boutonModale" class="modalBtn">CONTACT</button>
+                <button id="boutonModale" class="modalBtn">Contact</button>
             </div>
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
@@ -143,7 +144,7 @@
                         }
                         ?>
 
-                            <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+                            <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
                     <div class="thumbnail-title" style="display: none;">
                         <p><?php the_title(); ?></p>

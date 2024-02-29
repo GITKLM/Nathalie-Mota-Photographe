@@ -21,8 +21,8 @@ Template Name: Lightbox
     <span class="close">&times;</span>
   <div class="lightBox-container">
   <div class="prev-ar" id="prevArrow">
-<img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
-    </div>
+      <img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
+   </div>
 
 <div class="test">
   <div class="img-lightBox">

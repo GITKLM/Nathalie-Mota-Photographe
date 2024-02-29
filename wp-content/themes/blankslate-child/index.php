@@ -9,36 +9,36 @@ get_header();
           <div class="select-box__current" tabindex="1">
             
             <div class="select-box__value">
-              <input class="select-box__input" type="radio" id="0" value="1" name="category" checked>
-              <p class="select-box__input-text">CATÉGORIES</p>
+                <input class="select-box__input" type="radio" id="0" value="1" name="category" checked>
+                <p class="select-box__input-text">CATÉGORIES</p>
             </div>
-            
-            <?php
-            $categories = get_terms('categorie');
-            $index = 1;
-            foreach ($categories as $category) {
-                echo '
-                <div class="select-box__value">
-                  <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
-                  <p class="select-box__input-text">' . esc_html($category->name) . '</p>
-                </div>';
-                $index++;
-            }
-            ?>
-            <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
-          </div>
-          <ul class="select-box__list">
-            <li>
-              <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
-            </li>
-            <?php
-            $index = 1;
-            foreach ($categories as $category) {
-                echo '<li><label class="select-box__option" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
-                $index++;
-            }
-            ?>
-          </ul>
+                
+                <?php
+                $categories = get_terms('categorie');
+                $index = 1;
+                foreach ($categories as $category) {
+                    echo '
+                    <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
+                    <p class="select-box__input-text">' . esc_html($category->name) . '</p>
+                    </div>';
+                    $index++;
+                }
+                ?>
+                <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
+         </div>
+            <ul class="select-box__list">
+                <li>
+                <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
+                </li>
+                <?php
+                $index = 1;
+                foreach ($categories as $category) {
+                    echo '<li><label class="select-box__option" id="zebi1" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
+                    $index++;
+                }
+                ?>
+            </ul>
         </div>
         <div class="select-box">
             <div class="select-box__current" tabindex="1">
@@ -114,11 +114,11 @@ get_header();
                     ?>
                 </ul>
             </div>
-        </div>
     </div>
-    
+</div>
 
-    <div class="thumbnails-container">
+
+<div class="thumbnails-container">
     <div class="row" id="image-row">
         <?php
         $args = array(
@@ -127,7 +127,7 @@ get_header();
         );
 
         // Ajouter la logique pour filtrer par taxonomie
-        if ( isset( $_GET['category'] ) && $_GET['category'] != '' ) {
+        if (isset($_GET['category']) && $_GET['category'] != '') {
             $args['tax_query'][] = array(
                 'taxonomy' => 'categorie',
                 'field'    => 'slug',
@@ -135,7 +135,7 @@ get_header();
             );
         }
 
-        if ( isset( $_GET['format'] ) && $_GET['format'] != '' ) {
+        if (isset($_GET['format']) && $_GET['format'] != '') {
             $args['tax_query'][] = array(
                 'taxonomy' => 'format',
                 'field'    => 'slug',
@@ -143,7 +143,7 @@ get_header();
             );
         }
 
-        if ( isset( $_GET['type_reference'] ) && $_GET['type_reference'] != '' ) {
+        if (isset($_GET['type_reference']) && $_GET['type_reference'] != '') {
             $args['tax_query'][] = array(
                 'taxonomy' => 'annee',
                 'field'    => 'slug',
@@ -152,48 +152,49 @@ get_header();
         }
 
         // Récupérer les éléments en fonction des paramètres de requête
-        $photos_query = new WP_Query( $args );
+        $photos_query = new WP_Query($args);
 
         // Afficher les éléments récupérés
-        if ( $photos_query->have_posts() ) :
-            while ( $photos_query->have_posts() ) : $photos_query->the_post();
+        if ($photos_query->have_posts()) :
+            while ($photos_query->have_posts()) : $photos_query->the_post();
                 // Récupérer les catégories associées à la photo
-                $categories = get_the_terms( get_the_ID(), 'categorie' );
-                ?>
-
+                $categories = get_the_terms(get_the_ID(), 'categorie');
+        ?>
                 <div class="column">
                     <div class="thumbnail-container">
                         <?php
                         // Afficher le thumbnail
                         the_post_thumbnail(
-                            array( 564, 495 ),
-                            array( 'class' => 'custom-thumbnail' )
+                            array(564, 495),
+                            array('class' => 'custom-thumbnail')
                         );
                         ?>
-                        <img class="top-image" id="openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
-                        <div class="thumbnail-title" style="display: none;">
+                        <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
+                        <a href="<?php the_permalink(); ?>" class="centered-image-link">
+                            <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                        </a>
+                        <div class="thumbnail-title">
                             <p><?php the_title(); ?></p>
                             <?php
                             // Afficher les catégories
-                            if ( $categories ) {
+                            if ($categories) {
                                 echo '<ul class="categories-list">';
-                                foreach ( $categories as $category ) {
+                                foreach ($categories as $category) {
                                     echo '<li>' . $category->name . '</li>';
                                 }
                                 echo '</ul>';
                             }
                             ?>
                         </div>
-                        <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
                     </div>
                 </div>
-                <?php
+            <?php
             endwhile;
             wp_reset_postdata(); // Réinitialiser les données de publication
         else :
             echo 'Aucun élément trouvé.';
         endif;
-        ?>
+            ?>
     </div>
     <div class="load-more-container">
         <button id="load-more">Charger plus</button>
