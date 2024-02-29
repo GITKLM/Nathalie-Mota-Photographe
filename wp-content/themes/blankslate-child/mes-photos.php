@@ -6,17 +6,17 @@
     <header class="entry-header flex-item">
         <h2 class="entry-title"><?php the_title(); ?></h2>
         <div class="entry-meta">
-        <p>RÉFÉRENCE:
-            <?php 
-            $references = get_the_terms( get_the_ID(), 'reference' );
-            if ( $references && ! is_wp_error( $references ) ) {
-                $reference_names = array();
-                foreach ($references as $reference) {
-                    $reference_names[] = $reference->name;
+            <p class="">RÉFÉRENCE:
+                <?php 
+                $references = get_the_terms( get_the_ID(), 'reference' );
+                if ( $references && ! is_wp_error( $references ) ) {
+                    $reference_names = array();
+                    foreach ($references as $reference) {
+                        $reference_names[] = $reference->name;
+                    }
+                    echo join(', ', $reference_names);
                 }
-                echo join(', ', $reference_names);
-            }
-            ?>
+                ?>
             </p>
 
             <?php
@@ -39,18 +39,17 @@
             
             <p>FORMAT: <?php $terms_format = get_the_terms( get_the_ID(), 'format' ); ?><?php echo join(', ', wp_list_pluck($terms_format, 'name')); ?></p>
 
-            
             <p>TYPE: 
-            <?php 
-            $types = get_the_terms( get_the_ID(), 'type2' );
-            if ( $types && ! is_wp_error( $types ) ) {
-                $type_names = array();
-                foreach ($types as $type) {
-                    $type_names[] = $type->name;
+                <?php 
+                $types = get_the_terms( get_the_ID(), 'type2' );
+                if ( $types && ! is_wp_error( $types ) ) {
+                    $type_names = array();
+                    foreach ($types as $type) {
+                        $type_names[] = $type->name;
+                    }
+                    echo join(', ', $type_names);
                 }
-                echo join(', ', $type_names);
-            }
-            ?>
+                ?>
             </p>
 
             <p>ANNÉE: <?php $terms_annee = get_the_terms( get_the_ID(), 'annee' ); ?><?php echo join(', ', wp_list_pluck($terms_annee, 'name')); ?></p>
@@ -58,12 +57,13 @@
             <div class="contact-container">
                 <p>Cette photo vous intéresse ?</p>
                 <button id="boutonModale" class="modalBtn">Contact</button>
+                
             </div>
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
 
     <div class="entry-content flex-item">
-    <?php the_content(); ?>
+        <?php the_content(); ?>
         <div id="img-nav-container">
             <div id="img-nav">
                 <div id="img-min">
@@ -95,11 +95,6 @@
                         <a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="arrow-link next-link" data-id="<?php echo $next_post_id; ?>"><img src="<?php echo esc_url(get_stylesheet_directory_uri()) . '/images/Line 7.png'; ?>" alt="" class="arrow-img-line next-arrow-img"></a>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div><!-- .entry-content -->
@@ -133,8 +128,8 @@
         // Boucle pour afficher les images des articles retournés
         if ($related_posts->have_posts()) :
             while ($related_posts->have_posts()) : $related_posts->the_post();
-        ?>
-                <div class="autre-img autre-img-<?php echo ($related_posts->current_post == 0) ? '1' : '2'; ?>">
+                ?>
+                <div class="thumbnail-container autre-img autre-img-<?php echo ($related_posts->current_post == 0) ? '1' : '2'; ?>">
                     <div style="width: 564px; height: 495px; overflow: hidden;">
                         <?php
                         if (has_post_thumbnail()) {
@@ -144,27 +139,31 @@
                         }
                         ?>
 
-                            <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
-                    <div class="thumbnail-title" style="display: none;">
-                        <p><?php the_title(); ?></p>
-                        <?php
-                        // Afficher les catégories
-                        if ($categories) {
-                            echo '<ul class="categories-list">';
-                            foreach ($categories as $category) {
-                                echo '<li>' . $category->name . '</li>';
+
+                    <div class="thumbnail-title">
+                            <p><?php the_title(); ?></p>
+                            <?php
+                            // Afficher les catégories
+                            if ($categories) {
+                                echo '<ul class="categories-list">';
+                                foreach ($categories as $category) {
+                                    echo '<li>' . $category->name . '</li>';
+                                }
+                                echo '</ul>';
                             }
-                            echo '</ul>';
-                        }
-                        ?>
-                    </div>
-                            <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                            ?>
+                        </div>
+                        <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
+                                <a href="<?php the_permalink(); ?>" class="centered-image-link">
+                        <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                        </a>
                     
                     </div>
                     
-                </div>
+              
+            </div>
         <?php
             endwhile;
             wp_reset_postdata(); // Réinitialiser les données post
@@ -188,7 +187,9 @@ if ($terms_references && !is_wp_error($terms_references)) {
 
 <script>
 // Définir une variable JavaScript pour stocker les références
+src="script.js">
 var reference_data = <?php echo json_encode($references); ?>;
+
 </script>
 
 
