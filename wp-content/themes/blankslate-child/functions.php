@@ -1,23 +1,5 @@
 <?php
 
-
-/* CSS */
-
-
-
-/* REF PHOTOS MODALE */
-
-
-
-/* TEST FLECHES */
-
-
-
-
-
-
-
-
 /* TRIER */
 // Charger AJAX
 add_action('wp_enqueue_scripts', 'add_custom_scripts');
@@ -34,6 +16,7 @@ function add_custom_scripts() {
 
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
 
 function filter_photos() {
     $category = isset($_POST['category']) ? $_POST['category'] : '';

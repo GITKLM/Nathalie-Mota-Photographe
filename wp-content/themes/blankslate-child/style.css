@@ -57,7 +57,7 @@ margin-left: 150px;
 margin-right: 150px;
 
   }
-  
+
   /*  HEADER */
 #branding{
     display: none;
@@ -275,6 +275,11 @@ padding-top: 100px;
   width: 597px;
   height: 106px;
 }
+.modal-content p label {
+font-family: 'Poppins';
+font-size: 12px;
+font-weight: 500;
+}
 
 .wpcf7-form{
   width: 270px;
@@ -304,7 +309,13 @@ margin-left: 27%;
 }
 
 .wpcf7-submit {
+  border-radius: 2px;
 padding: 20px 110px;
+appearance: none;
+background-color: #D8D8D8;
+border: none;
+cursor: pointer;
+outline: none;
 }
 
 
@@ -492,6 +503,7 @@ justify-content: center;
   font-family: 'Poppins';
   font-weight: 300;
 }
+
 .flex-container {
   display: flex;
 }

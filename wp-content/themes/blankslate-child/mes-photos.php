@@ -1,6 +1,3 @@
-<?php
-// Affichage personnalisé pour les articles individuels
-?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('flex-container'); ?>>
     <header class="entry-header flex-item">
@@ -18,12 +15,11 @@
                 }
                 ?>
             </p>
-
             <?php
-            // Récupérer les termes de la taxonomie 'categorie' associés à cet article
+            // Récupérer les termes 'categorie' associés à cet article
             $terms_categorie = get_the_terms( get_the_ID(), 'categorie' );
 
-            // Vérifier s'il y a des termes et les afficher le cas échéant
+        
             if ( $terms_categorie && ! is_wp_error( $terms_categorie ) ) {
                 $term_names_categorie = array();
 
@@ -31,7 +27,6 @@
                     $term_names_categorie[] = $term->name;
                 }
 
-                // Afficher les termes séparés par une virgule
                 $term_list_categorie = join( ', ', $term_names_categorie );
                 echo '<p>CATEGORIE: ' . $term_list_categorie . '</p>';
             }
@@ -61,8 +56,8 @@
                 <p>Cette photo vous intéresse ?</p>
                 <button id="boutonModale" class="modalBtn">Contact</button>
             </div>
-        </div><!-- .entry-meta -->
-    </header><!-- .entry-header -->
+        </div>
+    </header>
 
     <div class="entry-content flex-item">
         <?php the_content(); ?>
