@@ -53,11 +53,13 @@
             </p>
 
             <p>ANNÉE: <?php $terms_annee = get_the_terms( get_the_ID(), 'annee' ); ?><?php echo join(', ', wp_list_pluck($terms_annee, 'name')); ?></p>
-            <img src="<?php echo get_stylesheet_directory_uri() . '/images/Line 3.png'; ?>" alt="petite ligne">
+            <div class="lignes">
+            <img id="grande-ligne" src="<?php echo get_stylesheet_directory_uri() . '/images/Line 4.png'; ?>" alt="grande ligne">
+            <img id="petite-ligne"src="<?php echo get_stylesheet_directory_uri() . '/images/Line 3.png'; ?>" alt="petite ligne">
+            </div>
             <div class="contact-container">
                 <p>Cette photo vous intéresse ?</p>
                 <button id="boutonModale" class="modalBtn">Contact</button>
-                
             </div>
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
@@ -130,17 +132,14 @@
             while ($related_posts->have_posts()) : $related_posts->the_post();
                 ?>
                 <div class="thumbnail-container autre-img autre-img-<?php echo ($related_posts->current_post == 0) ? '1' : '2'; ?>">
-                    <div style="width: 564px; height: 495px; overflow: hidden;">
-                        <?php
-                        if (has_post_thumbnail()) {
-                            the_post_thumbnail('full', array('style' => 'width: 100%; height: 100%;'));
-                        } else {
-                            echo 'Pas d\'image disponible';
-                        }
-                        ?>
-
-
-
+                    <div style="overflow: hidden;">
+                    <?php
+                    if (has_post_thumbnail()) {
+                        the_post_thumbnail('full', array('class' => 'custom-thumbnail', 'id' => 'id-thumbnail', 'style' => 'width: 100%; height: 100%;'));
+                    } else {
+                        echo 'Pas d\'image disponible';
+                    }
+                    ?>
                     <div class="thumbnail-title">
                             <p><?php the_title(); ?></p>
                             <?php
@@ -187,7 +186,6 @@ if ($terms_references && !is_wp_error($terms_references)) {
 
 <script>
 // Définir une variable JavaScript pour stocker les références
-src="script.js">
 var reference_data = <?php echo json_encode($references); ?>;
 
 </script>

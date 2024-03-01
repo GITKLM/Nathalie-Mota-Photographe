@@ -130,12 +130,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var modalTitle = modalContent.querySelector(".lightBox-categories p:first-child");
     var modalCategory = modalContent.querySelector(".lightBox-categories p:last-child");
     var currentIndex = 0;
+    
+    // Déclarez openModalImages en dehors de l'événement de clic
+    var openModalImages;
 
     function updateModalContent(index) {
-        var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
         var thumbnailContainer = openModalImages[index].closest(".thumbnail-container");
         var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
-        var thumbnailCategory = thumbnailContainer.querySelector(".categories-list li").innerText;
+
+        // Vérifiez si thumbnailCategory existe avant d'accéder à innerText
+        var thumbnailCategoryElement = thumbnailContainer.querySelector(".categories-list li");
+        var thumbnailCategory = thumbnailCategoryElement ? thumbnailCategoryElement.innerText : "";
 
         // Récupérer l'URL de l'image de l'article photo
         var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").getAttribute("src");
@@ -146,23 +151,10 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIndex = index;
     }
 
-    function showPreviousImage() {
-        if (currentIndex > 0) {
-            updateModalContent(currentIndex - 1);
-        }
-    }
-
-    function showNextImage() {
-        var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
-        if (currentIndex < openModalImages.length - 1) {
-            updateModalContent(currentIndex + 1);
-        }
-    }
-
     // Utilisation d'un événement délégué pour les éléments dynamiques
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('openModalImage')) {
-            var openModalImages = document.querySelectorAll(".openModalImage"); // Déplacer la déclaration ici
+            openModalImages = document.querySelectorAll(".openModalImage"); // Mettez à jour openModalImages ici
             var index = Array.from(openModalImages).indexOf(event.target);
             updateModalContent(index);
             moda.style.display = "block";
@@ -179,7 +171,21 @@ document.addEventListener("DOMContentLoaded", function() {
     closeButton.addEventListener("click", function() {
         moda.style.display = "none";
     });
+
+    function showPreviousImage() {
+        if (currentIndex > 0) {
+            updateModalContent(currentIndex - 1);
+        }
+    }
+
+    function showNextImage() {
+        if (currentIndex < openModalImages.length - 1) {
+            updateModalContent(currentIndex + 1);
+        }
+    }
 });
+
+
 
 
 
@@ -224,13 +230,13 @@ jQuery(document).ready(function($) {
                     $('#image-row').append(response); // Ajouter les miniatures à la fin de la rangée
                     offset += 8; // Mettre à jour l'offset
                 } else {
-                    $('#load-more').css('background-color', 'blue'); // Changer la couleur de fond du bouton
-                    $('#load-more').prop('disabled', true); // Désactiver le bouton
+                    $('#load-more').hide(); // Cacher le bouton
                 }
             }
         });
     });
 });
+
 
 
 

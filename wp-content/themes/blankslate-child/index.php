@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathalie Mota Photographie</title>
+</head>
+<body>
 <?php
 get_header();
 ?>
@@ -117,7 +125,6 @@ get_header();
     </div>
 </div>
 
-
 <div class="thumbnails-container">
     <div class="row" id="image-row">
         <?php
@@ -200,8 +207,10 @@ get_header();
         <button id="load-more">Charger plus</button>
     </div>
 </div>
-
-
 <?php
 get_footer();
 ?>
+
+</body>
+</html>
+

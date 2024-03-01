@@ -96,7 +96,7 @@ function filter_photos() {
                 <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
                 <div class="thumbnail-title">
-                            <p><?php the_title(); ?></p>
+                <p><?php the_title(); ?></p>
                             <?php
                             // Afficher les catégories
                             if ($categories) {
@@ -108,9 +108,9 @@ function filter_photos() {
                             }
                             ?>
                         </div>
-            <a href="<?php the_permalink(); ?>" class="centered-image-link">
-            <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
-            </a>
+                        <a href="<?php the_permalink(); ?>" class="centered-image-link">
+                        <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                        </a>
 
         </div>
     </div>
@@ -175,21 +175,23 @@ function load_more_thumbnails() {
                     );
                     ?>
                     <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
-                    <div class="thumbnail-title" style="display: none;">
-                        <p><?php the_title(); ?></p>
-                        <?php
-                        // Afficher les catégories
-                        if ($categories) {
-                            echo '<ul class="categories-list">';
-                            foreach ($categories as $category) {
-                                echo '<li>' . $category->name . '</li>';
+                    <div class="thumbnail-title">
+                    <p><?php the_title(); ?></p>
+                            <?php
+                            // Afficher les catégories
+                            if ($categories) {
+                                echo '<ul class="categories-list">';
+                                foreach ($categories as $category) {
+                                    echo '<li>' . $category->name . '</li>';
+                                }
+                                echo '</ul>';
                             }
-                            echo '</ul>';
-                        }
-                        ?>
+                            ?>
                     </div>
-                    <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
-                </div>
+                    <a href="<?php the_permalink(); ?>" class="centered-image-link">
+                        <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
+                        </a>
+                                    </div>
             </div>
             <?php
         endwhile;
@@ -206,18 +208,7 @@ function load_more_thumbnails() {
 
 
 /* TEST */
-// À placer dans le fichier functions.php pour que le script soit exécuté dans le pied de page
-add_action('wp_footer', 'add_custom_script');
 
-function add_custom_script() {
-    // Enregistrer le script JavaScript
-    wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), null, true);
-
-    // Localiser le script JavaScript avec ajaxurl
-    wp_localize_script('custom-script', 'custom_ajax', array(
-        'ajaxurl' => admin_url('admin-ajax.php')
-    ));
-}
 
 
 
