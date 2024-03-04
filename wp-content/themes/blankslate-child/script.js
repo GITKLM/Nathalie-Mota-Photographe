@@ -21,25 +21,15 @@ jQuery(document).ready(function($) {
 
 });
 
-  
-
 /* REF PHOTO */
 jQuery(document).ready(function($) {
-    // Ajoutez un gestionnaire d'événements pour afficher la modale lorsque vous cliquez sur un élément avec la classe modalBtn
     $('.modalBtn').on('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-        
-        // Récupérer les références de l'article
+        event.preventDefault();      
         var referencePhoto = reference_data.join(', ');
-
-        // Remplir automatiquement le champ "RÉF. PHOTO" du formulaire Contact Form 7 avec les références récupérées
         $('#photo-reference').val(referencePhoto);
-        
-        // Afficher la modale
         $('#myModal').css('display', 'block');
     });
 
-    // Ajoutez un gestionnaire d'événements pour fermer la modale en cliquant en dehors de celle-ci
     $(window).on('click', function(event) {
         if ($(event.target).is('#myModal')) {
             $('#myModal').css('display', 'none');
@@ -54,7 +44,6 @@ document.getElementById('menu-toggle')
 });
 
 // MENU DEROULANT
-
 document.addEventListener("DOMContentLoaded", function() {
     var menuToggle = document.getElementById('menu-toggle');
     var dropdownMenu = document.querySelector('.dropdown-menu');
@@ -64,18 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
       dropdownMenu.classList.toggle('active');
   
       if (dropdownMenu.classList.contains('active')) {
-        // Désactiver le défilement du corps lorsque le menu est ouvert
         body.style.overflow = 'hidden';
       } else {
-        // Réactiver le défilement du corps lorsque le menu est fermé
         body.style.overflow = '';
       }
     });
   });
   
-
-
-
 // nav article
 jQuery(document).ready(function($) {
     $('.prev-arrow').hover(function() {
@@ -90,28 +74,23 @@ jQuery(document).ready(function($) {
 });
 
 
-
-
 /* FILTRE */
 jQuery(document).ready(function($) {
-    // Fonction pour gérer les changements de sélection
     $('.select-box__input').change(function() {
         var category = $('input[name="category"]:checked').val();
         var format = $('input[name="format"]:checked').val();
         var type_reference = $('input[name="type_reference"]:checked').val();
 
-        // Envoyer une requête Ajax à WordPress
         $.ajax({
-            url: custom_ajax.ajaxurl, // Utilisation de custom_ajax.ajaxurl
+            url: custom_ajax.ajaxurl,
             type: 'POST',
             data: {
-                action: 'filter_photos', // Action à appeler dans votre fichier functions.php
+                action: 'filter_photos',
                 category: category,
                 format: format,
                 type_reference: type_reference,
             },
             success: function(response) {
-                // Mettre à jour la section des photos avec la réponse
                 $('.thumbnails-container .row').html(response);
             },
             error: function(xhr, status, error) {
@@ -130,19 +109,13 @@ document.addEventListener("DOMContentLoaded", function() {
     var modalTitle = modalContent.querySelector(".lightBox-categories p:first-child");
     var modalCategory = modalContent.querySelector(".lightBox-categories p:last-child");
     var currentIndex = 0;
-    
-    // Déclarez openModalImages en dehors de l'événement de clic
     var openModalImages;
 
     function updateModalContent(index) {
         var thumbnailContainer = openModalImages[index].closest(".thumbnail-container");
         var thumbnailTitle = thumbnailContainer.querySelector(".thumbnail-title p").innerText;
-
-        // Vérifiez si thumbnailCategory existe avant d'accéder à innerText
         var thumbnailCategoryElement = thumbnailContainer.querySelector(".categories-list li");
         var thumbnailCategory = thumbnailCategoryElement ? thumbnailCategoryElement.innerText : "";
-
-        // Récupérer l'URL de l'image de l'article photo
         var thumbnailImageSrc = thumbnailContainer.querySelector(".custom-thumbnail").getAttribute("src");
 
         modalImage.src = thumbnailImageSrc;
@@ -151,10 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIndex = index;
     }
 
-    // Utilisation d'un événement délégué pour les éléments dynamiques
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('openModalImage')) {
-            openModalImages = document.querySelectorAll(".openModalImage"); // Mettez à jour openModalImages ici
+            openModalImages = document.querySelectorAll(".openModalImage");
             var index = Array.from(openModalImages).indexOf(event.target);
             updateModalContent(index);
             moda.style.display = "block";
@@ -185,52 +157,40 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
-
-
-
 /* OEIL ouvrir */
 
     document.addEventListener("DOMContentLoaded", function() {
-        // Sélectionnez tous les éléments avec la classe "centered-image"
         var centeredImages = document.querySelectorAll('.centered-image');
 
-        // Parcourez tous les éléments sélectionnés
         centeredImages.forEach(function(image) {
-            // Ajoutez un écouteur d'événements de clic à chaque élément
             image.addEventListener('click', function() {
-                // Obtenez l'URL de l'article associé en remontant dans la structure DOM
                 var articleURL = this.closest('.thumbnail-container, .autre-img').querySelector('.top-image').getAttribute('href');
                 
-                // Redirigez l'utilisateur vers l'URL de l'article
                 window.location.href = articleURL;
             });
         });
     });
-    
-/* TEST TRI  */
-
 
   
 /* CHARGEMENT SUPPLEMENTAIRE */
 
 jQuery(document).ready(function($) {
-    var offset = 8; // Offset initial
+    var offset = 8;
 
     $('#load-more').on('click', function() {
         $.ajax({
             url: ajaxurl,
             type: 'post',
             data: {
-                action: 'load_more_thumbnails', // Action WordPress AJAX
-                offset: offset, // Offset pour la requête
+                action: 'load_more_thumbnails',
+                offset: offset,
             },
             success: function(response) {
                 if (response != 'end') {
-                    $('#image-row').append(response); // Ajouter les miniatures à la fin de la rangée
-                    offset += 8; // Mettre à jour l'offset
+                    $('#image-row').append(response);
+                    offset += 8;
                 } else {
-                    $('#load-more').hide(); // Cacher le bouton
+                    $('#load-more').hide();
                 }
             }
         });

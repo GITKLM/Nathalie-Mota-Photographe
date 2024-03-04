@@ -39,21 +39,12 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </nav>
 </div>
 
-
-
 <div class="banner-container">
   <?php
   if (!is_single()) :
-      // Chemin vers le répertoire contenant les images aléatoires
       $random_image_dir = get_stylesheet_directory() . '/images/random/';
-      
-      // Liste des fichiers dans le répertoire
       $random_images = glob($random_image_dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-      
-      // Sélection aléatoire d'une image parmi la liste
       $random_image = $random_images[array_rand($random_images)];
-  
-      // Affichage de la bannière avec l'image aléatoire
   ?>
 <?php if (!is_single()) : ?>
 <div class="banner">
@@ -67,7 +58,6 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
   <?php endif; ?>
 
 </div>
-
 
 </header>
 <div class="dropdown-menu">

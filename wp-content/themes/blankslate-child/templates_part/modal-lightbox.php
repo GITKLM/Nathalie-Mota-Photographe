@@ -11,11 +11,8 @@ Template Name: Lightbox
     <title>Lightbox</title>
 </head>
 <body>
-
-
 <div id="myModa" class="moda">
 
-  
   <div class="modal-conten">
     
     <span class="close">&times;</span>
@@ -23,7 +20,6 @@ Template Name: Lightbox
   <div class="prev-ar" id="prevArrow">
       <img src="<?php echo get_stylesheet_directory_uri() . '/images/left_white.png'; ?>" alt=""><p>Précédente</p>
    </div>
-
 <div class="test">
   <div class="img-lightBox">
   <img src="" alt="Thumbnail">
@@ -33,9 +29,6 @@ Template Name: Lightbox
       <p>Categorie</p>
     </div>
 </div>
-
-   
-
 <div class="next-ar" id="nextArrow">
 <p>Suivante</p><img src="<?php echo get_stylesheet_directory_uri() . '/images/right_white.png'; ?>" alt="">
     </div>
@@ -43,7 +36,6 @@ Template Name: Lightbox
      
   </div>
 </div>
-
 </body>
 </html>
 

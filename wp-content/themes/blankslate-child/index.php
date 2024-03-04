@@ -158,19 +158,15 @@ get_header();
             );
         }
 
-        // Récupérer les éléments en fonction des paramètres de requête
         $photos_query = new WP_Query($args);
 
-        // Afficher les éléments récupérés
         if ($photos_query->have_posts()) :
             while ($photos_query->have_posts()) : $photos_query->the_post();
-                // Récupérer les catégories associées à la photo
                 $categories = get_the_terms(get_the_ID(), 'categorie');
         ?>
                 <div class="column">
                     <div class="thumbnail-container">
                         <?php
-                        // Afficher le thumbnail
                         the_post_thumbnail(
                             array(564, 495),
                             array('class' => 'custom-thumbnail')
@@ -183,7 +179,6 @@ get_header();
                         <div class="thumbnail-title">
                             <p><?php the_title(); ?></p>
                             <?php
-                            // Afficher les catégories
                             if ($categories) {
                                 echo '<ul class="categories-list">';
                                 foreach ($categories as $category) {
@@ -197,7 +192,7 @@ get_header();
                 </div>
             <?php
             endwhile;
-            wp_reset_postdata(); // Réinitialiser les données de publication
+            wp_reset_postdata();
         else :
             echo 'Aucun élément trouvé.';
         endif;

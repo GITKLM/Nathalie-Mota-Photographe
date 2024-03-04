@@ -16,10 +16,8 @@
                 ?>
             </p>
             <?php
-            // Récupérer les termes 'categorie' associés à cet article
+          
             $terms_categorie = get_the_terms( get_the_ID(), 'categorie' );
-
-        
             if ( $terms_categorie && ! is_wp_error( $terms_categorie ) ) {
                 $term_names_categorie = array();
 
@@ -63,8 +61,7 @@
         <?php the_content(); ?>
         <div id="img-nav-container">
             <div id="img-nav">
-                <div id="img-min">
-                    
+                <div id="img-min">    
                 </div>
                 <div id="arrow-container">
                     <div class="prev-arrow">
@@ -94,21 +91,18 @@
                 </div>
             </div>
         </div>
-    </div><!-- .entry-content -->
+    </div>
 
 </article><!-- #post-<?php the_ID(); ?> -->
 <footer class="footer">
     <p>VOUS AIMEREZ AUSSI</p>
     <div class="autre-img-container">
         <?php
-        // Récupérer les ID des articles ayant la même catégorie que l'article actuel
         $current_post_id = get_the_ID();
         $current_post_categories = wp_get_post_terms($current_post_id, 'categorie', array('fields' => 'ids'));
-        
-        // Paramètres de la requête pour récupérer un autre article de la même catégorie
         $args = array(
-            'post_type' => 'photo', // Remplacez "photo" par le nom de votre type de publication personnalisé
-            'posts_per_page' => 2, // Modifier pour récupérer 2 articles au lieu de 1
+            'post_type' => 'photo',
+            'posts_per_page' => 2,
             'post__not_in' => array($current_post_id),
             'tax_query' => array(
                 array(
@@ -118,11 +112,7 @@
                 ),
             ),
         );
-
-        // Requête WP_Query
         $related_posts = new WP_Query($args);
-
-        // Boucle pour afficher les images des articles retournés
         if ($related_posts->have_posts()) :
             while ($related_posts->have_posts()) : $related_posts->the_post();
                 ?>
@@ -138,7 +128,6 @@
                     <div class="thumbnail-title">
                             <p><?php the_title(); ?></p>
                             <?php
-                            // Afficher les catégories
                             if ($categories) {
                                 echo '<ul class="categories-list">';
                                 foreach ($categories as $category) {
@@ -155,8 +144,6 @@
                         </a>
                     
                     </div>
-                    
-              
             </div>
         <?php
             endwhile;
@@ -169,7 +156,7 @@
     </div>
 </footer>
 <?php
-// Récupérer les références de l'article
+
 $references = array();
 $terms_references = get_the_terms(get_the_ID(), 'reference');
 if ($terms_references && !is_wp_error($terms_references)) {
@@ -180,13 +167,8 @@ if ($terms_references && !is_wp_error($terms_references)) {
 ?>
 
 <script>
-// Définir une variable JavaScript pour stocker les références
 var reference_data = <?php echo json_encode($references); ?>;
 
 </script>
-
-
-
-
 
 <?php get_footer(); ?>

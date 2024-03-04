@@ -1,14 +1,10 @@
 <?php
-
 /* TRIER */
 // Charger AJAX
 add_action('wp_enqueue_scripts', 'add_custom_scripts');
 
 function add_custom_scripts() {
-    // Enregistrer le script JavaScript
     wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), null, true);
-
-    // Localiser le script JavaScript avec ajaxurl
     wp_localize_script('custom-script', 'custom_ajax', array(
         'ajaxurl' => admin_url('admin-ajax.php')
     ));
@@ -25,10 +21,9 @@ function filter_photos() {
 
     $args = array(
         'post_type' => 'photo',
-        'posts_per_page' => -1, // Récupérer tous les éléments
+        'posts_per_page' => -1,
     );
 
-    // Ajouter les paramètres de taxonomie à la requête
     if (!empty($category)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -53,35 +48,27 @@ function filter_photos() {
         );
     }
 
-    // Récupérer les éléments en fonction des paramètres de requête
     $photos_query = new WP_Query($args);
 
-    // Construire le HTML des photos filtrées
     ob_start();
     if ($photos_query->have_posts()) :
         while ($photos_query->have_posts()) : $photos_query->the_post();
-    // Récupérer l'URL de l'article
     $article_url = get_permalink();
 
-    // Récupérer l'URL de l'image en taille réelle
     $image_url = wp_get_attachment_url(get_post_thumbnail_id());
 
-    // Afficher la miniature de l'article avec le lien vers l'article
     ?>
     <div class="column">
         <div class="thumbnail-container">
             <a href="<?php echo esc_url($article_url); ?>">
                 <?php the_post_thumbnail(array(564, 495), array('class' => 'custom-thumbnail')); ?>
             </a>
-            
 
-                <!-- Afficher l'image de l'icone fullscreen -->
                 <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
 
                 <div class="thumbnail-title">
                 <p><?php the_title(); ?></p>
                             <?php
-                            // Afficher les catégories
                             if ($categories) {
                                 echo '<ul class="categories-list">';
                                 foreach ($categories as $category) {
@@ -99,7 +86,7 @@ function filter_photos() {
     </div>
 <?php endwhile;
 
-        wp_reset_postdata(); // Réinitialiser les données de publication
+        wp_reset_postdata();
     else :
         echo 'Aucun élément trouvé.';
     endif;
@@ -109,11 +96,6 @@ function filter_photos() {
 
     wp_die();
 }
-
-
-
-
-
 
 /* CHARGER + */
 add_action('wp_enqueue_scripts', 'add_ajaxurl');
@@ -134,24 +116,17 @@ function load_more_thumbnails() {
         'offset' => $offset,
     );
 
-    // Le reste de votre logique de requête reste inchangée
-
-    // Récupérer les éléments en fonction des paramètres de requête
     $photos_query = new WP_Query($args);
 
     ob_start();
 
-    // Afficher les éléments récupérés
     if ($photos_query->have_posts()) :
         while ($photos_query->have_posts()) : $photos_query->the_post();
-            // Récupérer les catégories associées à la photo
             $categories = get_the_terms(get_the_ID(), 'categorie');
-            // Afficher le thumbnail de chaque article
             ?>
       <div class="column">
                 <div class="thumbnail-container">
                     <?php
-                    // Afficher le thumbnail
                     the_post_thumbnail(
                         array(564, 495),
                         array('class' => 'custom-thumbnail')
@@ -161,7 +136,6 @@ function load_more_thumbnails() {
                     <div class="thumbnail-title">
                     <p><?php the_title(); ?></p>
                             <?php
-                            // Afficher les catégories
                             if ($categories) {
                                 echo '<ul class="categories-list">';
                                 foreach ($categories as $category) {
@@ -178,9 +152,9 @@ function load_more_thumbnails() {
             </div>
             <?php
         endwhile;
-        wp_reset_postdata(); // Réinitialiser les données de publication
+        wp_reset_postdata();
     else :
-        echo 'end'; // Indiquer que c'est la fin des éléments
+        echo 'end';
     endif;
 
     $response = ob_get_clean();
@@ -188,15 +162,6 @@ function load_more_thumbnails() {
 
     wp_die();
 }
-
-
-/* TEST */
-
-
-
-
-
-
 
 ?>
 
