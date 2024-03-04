@@ -133,7 +133,6 @@ get_header();
             'posts_per_page' => 8,
         );
 
-        // Ajouter la logique pour filtrer par taxonomie
         if (isset($_GET['category']) && $_GET['category'] != '') {
             $args['tax_query'][] = array(
                 'taxonomy' => 'categorie',

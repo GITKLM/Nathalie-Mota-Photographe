@@ -147,7 +147,7 @@
             </div>
         <?php
             endwhile;
-            wp_reset_postdata(); // Réinitialiser les données post
+            wp_reset_postdata();
         else :
             echo 'Aucun autre article trouvé.';
         endif;
