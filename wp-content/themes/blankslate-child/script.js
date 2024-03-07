@@ -186,7 +186,8 @@ jQuery(document).ready(function($) {
                 offset: offset,
             },
             success: function(response) {
-                if (response != 'end') {
+                console.log('Response from server:', response); // Débogage
+                if (response.trim() !== '') { // Vérifier si la réponse n'est pas vide
                     $('#image-row').append(response);
                     offset += 8;
                 } else {

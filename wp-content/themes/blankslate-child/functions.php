@@ -124,7 +124,7 @@ function load_more_thumbnails() {
         while ($photos_query->have_posts()) : $photos_query->the_post();
             $categories = get_the_terms(get_the_ID(), 'categorie');
             ?>
-      <div class="column">
+            <div class="column">
                 <div class="thumbnail-container">
                     <?php
                     the_post_thumbnail(
@@ -134,27 +134,25 @@ function load_more_thumbnails() {
                     ?>
                     <img class="top-image openModalImage" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_fullscreen.png'; ?>" alt="fullscreen">
                     <div class="thumbnail-title">
-                    <p><?php the_title(); ?></p>
-                            <?php
-                            if ($categories) {
-                                echo '<ul class="categories-list">';
-                                foreach ($categories as $category) {
-                                    echo '<li>' . $category->name . '</li>';
-                                }
-                                echo '</ul>';
+                        <p><?php the_title(); ?></p>
+                        <?php
+                        if ($categories) {
+                            echo '<ul class="categories-list">';
+                            foreach ($categories as $category) {
+                                echo '<li>' . $category->name . '</li>';
                             }
-                            ?>
+                            echo '</ul>';
+                        }
+                        ?>
                     </div>
                     <a href="<?php the_permalink(); ?>" class="centered-image-link">
                         <img class="centered-image" src="<?php echo get_stylesheet_directory_uri() . '/images/Icon_eye.png'; ?>" alt="oeil">
-                        </a>
-                                    </div>
+                    </a>
+                </div>
             </div>
             <?php
         endwhile;
         wp_reset_postdata();
-    else :
-        echo 'end';
     endif;
 
     $response = ob_get_clean();

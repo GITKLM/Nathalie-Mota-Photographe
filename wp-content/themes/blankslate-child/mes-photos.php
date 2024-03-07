@@ -71,7 +71,7 @@
                             $prev_post_id = $prev_post->ID;
                             $prev_img_url = get_the_post_thumbnail_url($prev_post_id);
                             previous_post_link('%link', '', true, '', 'type2');
-                            echo '<a href="' . get_permalink($prev_post) . '" class="arrow-link prev-link zebi" data-id="' . $prev_post_id . '"><img src="' . esc_url($prev_img_url) . '" alt="" class="arrow-img prev-img"></a>';
+                            echo '<a href="' . get_permalink($prev_post) . '" class="arrow-link prev-link mon-image" data-id="' . $prev_post_id . '"><img src="' . esc_url($prev_img_url) . '" alt="" class="arrow-img prev-img"></a>';
                         endif;
                         ?>
                         <a href="<?php echo esc_url(get_permalink($prev_post)); ?>" class="arrow-link prev-link" data-id="<?php echo $prev_post_id; ?>"><img src="<?php echo esc_url(get_stylesheet_directory_uri()) . '/images/Line 6.png'; ?>" alt="" class="arrow-img-line prev-arrow-img"></a>
@@ -83,7 +83,7 @@
                             $next_post_id = $next_post->ID;
                             $next_img_url = get_the_post_thumbnail_url($next_post_id);
                             next_post_link('%link', '', true, '', 'type2');
-                            echo '<a href="' . get_permalink($next_post) . '" class="arrow-link next-link zebi" data-id="' . $next_post_id . '"><img src="' . esc_url($next_img_url) . '" alt="" class="arrow-img next-img"></a>';
+                            echo '<a href="' . get_permalink($next_post) . '" class="arrow-link next-link mon-image" data-id="' . $next_post_id . '"><img src="' . esc_url($next_img_url) . '" alt="" class="arrow-img next-img"></a>';
                         endif;
                         ?>
                         <a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="arrow-link next-link" data-id="<?php echo $next_post_id; ?>"><img src="<?php echo esc_url(get_stylesheet_directory_uri()) . '/images/Line 7.png'; ?>" alt="" class="arrow-img-line next-arrow-img"></a>

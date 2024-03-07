@@ -13,7 +13,7 @@ get_header();
 
 <div class="select-box-container">
     <div class="select-box-left">
-        <div class="select-box">
+        <div class="select-box" id="categorie99">
           <div class="select-box__current" tabindex="1">
             
             <div class="select-box__value">
@@ -27,7 +27,7 @@ get_header();
                 foreach ($categories as $category) {
                     echo '
                     <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
+                    <input class="select-box__input " type="radio" id="' . $index . '" value="' . esc_attr($category->slug) . '" name="category">
                     <p class="select-box__input-text">' . esc_html($category->name) . '</p>
                     </div>';
                     $index++;
@@ -35,20 +35,17 @@ get_header();
                 ?>
                 <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
          </div>
-            <ul class="select-box__list">
-                <li>
-                <!-- <label class="select-box__option" for="0" aria-hidden>CATÉGORIES</label> -->
-                </li>
+            <ul class="select-box__list" id="categorie99">
                 <?php
                 $index = 1;
                 foreach ($categories as $category) {
-                    echo '<li><label class="select-box__option" id="zebi1" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
+                    echo '<li id="categorie99"><label class="select-box__option" id="categorie99" for="' . $index . '" aria-hidden>' . esc_html($category->name) . '</label></li>';
                     $index++;
                 }
                 ?>
             </ul>
         </div>
-        <div class="select-box">
+        <div class="select-box" id="categorie98">
             <div class="select-box__current" tabindex="1">
                 <div class="select-box__value">
                     <input class="select-box__input" type="radio" id="format_all" value="" name="format" checked>

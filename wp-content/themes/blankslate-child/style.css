@@ -534,7 +534,7 @@ justify-content: center;
   width: 79px;
   height: 69px;
 }
-.zebi img{
+.mon-image img{
   width: 0px;
 }
 
@@ -663,6 +663,12 @@ height: 495px;
 
 /* SELECT */
 
+#categorie99{
+z-index:99;
+}
+#categorie98{
+  z-index:98;
+  }
 .select-box-container{
   max-width: 1008px;
   display: flex;
@@ -806,6 +812,7 @@ height: 495px;
   padding: 15px;
   background-color: #fff;
   text-transform: lowercase;
+  z-index: 98;
 
 }
 
